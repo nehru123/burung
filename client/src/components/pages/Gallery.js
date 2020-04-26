@@ -15,10 +15,9 @@ const Container = styled.nav`
   }
   .Mycard {
     box-shadow: 10px 0px 18px #888888;
-    
   }
   .Wrapper {
-    backgroundColor:"grey";
+    backgroundcolor: "grey";
     background-image: url("back.PNG");
     background-size: cover;
   }
@@ -27,7 +26,6 @@ const Container = styled.nav`
   //   border-radius: 30px;
   //   background-color: #fbb034;
   //   background-image: linear-gradient(315deg, #fbb034 0%, #ffdd00 74%);
-  
 `;
 
 export default class Gallery extends Component {
@@ -40,18 +38,18 @@ export default class Gallery extends Component {
     data: [],
     idUp: "",
     id: 0,
-    _id: ""
+    _id: "",
   };
   // when component mounts, first thing it does is fetch all existing data in our db
   // then we incorporate a polling logic so that we can easily see if our db has
   // changed and implement those changes into our UI
   componentDidMount = async () => {
     this.setState({ isLoading: true });
-    await api.getAllGallery().then(galleries => {
+    await api.getAllGallery().then((galleries) => {
       console.log(galleries);
       this.setState({
         data: galleries.data.data,
-        isLoading: false
+        isLoading: false,
       });
     });
   };
@@ -63,14 +61,14 @@ export default class Gallery extends Component {
   }
   onChange({ target }) {
     this.setState({
-      [target.name]: target.value
+      [target.name]: target.value,
     });
   }
 
   getDataFromDb = () => {
-    api.getAllGallery().then(bird => {
+    api.getAllGallery().then((bird) => {
       this.setState({
-        data: bird.data.data
+        data: bird.data.data,
       });
     });
   };
@@ -103,7 +101,7 @@ export default class Gallery extends Component {
     }
   }
 
-  add = async e => {
+  add = async (e) => {
     e.preventDefault();
     if (
       this.state.judul &&
@@ -115,10 +113,10 @@ export default class Gallery extends Component {
         judul: this.state.judul,
         deskripsi: this.state.deskripsi,
         audio: this.state.audio,
-        gambar: this.state.gambar
+        gambar: this.state.gambar,
       };
 
-      await api.insertGallery(payload).then(res => {
+      await api.insertGallery(payload).then((res) => {
         window.alert(`Collection successfully`);
         this.getDataFromDb();
       });
@@ -128,7 +126,7 @@ export default class Gallery extends Component {
   };
 
   deleteData = async () => {
-    await api.deleteGById(this.state.idUp).then(res => {
+    await api.deleteGById(this.state.idUp).then((res) => {
       window.alert(`Bird deleted successfully`);
       this.getDataFromDb();
     });
@@ -139,11 +137,11 @@ export default class Gallery extends Component {
     var image = document.getElementById(target.name).files[0];
     var formdata = new FormData();
     formdata.append("files", image, image.name);
-    await api.uploadImg(formdata).then(res => {
+    await api.uploadImg(formdata).then((res) => {
       if (res.data.success) {
         window.alert("Gambar " + target.name + " berhasil di upload");
         this.setState({
-          [target.name]: res.data.data
+          [target.name]: res.data.data,
         });
       } else {
         window.alert(res.data.data);
@@ -158,11 +156,11 @@ export default class Gallery extends Component {
     var audio = document.getElementById(target.name).files[0];
     var formdata = new FormData();
     formdata.append("files", audio, audio.name);
-    await api.uploadAudio(formdata).then(res => {
+    await api.uploadAudio(formdata).then((res) => {
       if (res.data.success) {
         window.alert("Audio " + target.name + " berhasil di upload");
         this.setState({
-          [target.name]: res.data.data
+          [target.name]: res.data.data,
         });
       } else {
         window.alert(res.data.data);
@@ -222,7 +220,7 @@ export default class Gallery extends Component {
                             name="judul"
                             className="form-control"
                             id="inputCity"
-                            onChange={e => this.onChange(e)}
+                            onChange={(e) => this.onChange(e)}
                             value={this.state.judul}
                             required
                           ></input>
@@ -238,7 +236,7 @@ export default class Gallery extends Component {
                           id="exampleFormControlTextarea1"
                           rows="3"
                           name="deskripsi"
-                          onChange={e => this.onChange(e)}
+                          onChange={(e) => this.onChange(e)}
                           value={this.state.deskripsi}
                           required
                         ></textarea>
@@ -253,7 +251,7 @@ export default class Gallery extends Component {
                                 type="button"
                                 name="audio"
                                 class="btn btn-primary"
-                                onClick={e => this.uploadAudio(e)}
+                                onClick={(e) => this.uploadAudio(e)}
                               >
                                 Upload audio
                               </button>
@@ -264,7 +262,7 @@ export default class Gallery extends Component {
                           <input
                             type="file"
                             id="gambar"
-                            onChange={e => this.preview(e)}
+                            onChange={(e) => this.preview(e)}
                           />
                           <img id="outputgambar" width="100px" height="100px" />
                           <div class="form-group">
@@ -272,7 +270,7 @@ export default class Gallery extends Component {
                               type="button"
                               name="gambar"
                               class="btn btn-primary"
-                              onClick={e => this.uploadImage(e)}
+                              onClick={(e) => this.uploadImage(e)}
                             >
                               Upload gambar
                             </button>
@@ -292,7 +290,7 @@ export default class Gallery extends Component {
                           type="submit"
                           data-dismiss="modal"
                           className="btn btn-success"
-                          onClick={e => this.add(e)}
+                          onClick={(e) => this.add(e)}
                         >
                           Tambahkan
                         </button>
@@ -308,17 +306,17 @@ export default class Gallery extends Component {
         <div className="Wrapper">
           <div style={{}} class="album py-5 ">
             {/* <div class="container"> */}
-            <div style={{ padding: 50,margin:30}} class="row">
+            <div style={{ padding: 50, margin: 30 }} class="row">
               {data.length <= 0
                 ? "NO DB ENTRIES YET"
-                : data.map(dat => (
+                : data.map((dat) => (
                     <div class="col-md-4">
                       <div
                         style={{
                           borderRadius: 50,
                           margin: 50,
-                        
-                          backgroundColor: "#f2f2f2"
+
+                          backgroundColor: "#f2f2f2",
                         }}
                         class="Mycard"
                       >
@@ -326,7 +324,7 @@ export default class Gallery extends Component {
                           style={{
                             borderTopLeftRadius: 50,
                             borderTopRightRadius: 50,
-                            borderBottomRightRadius: 89
+                            borderBottomRightRadius: 89,
                           }}
                           src={this.state.path + "img/" + dat.gambar}
                           class="bd-placeholder-img card-img-top"
@@ -353,12 +351,12 @@ export default class Gallery extends Component {
                                 type="button"
                                 class="btn btn-sm btn-outline-secondary"
                                 name="idUp"
-                                onClick={e =>
+                                onClick={(e) =>
                                   this.setState({
-                                    idUp: dat._id
+                                    idUp: dat._id,
                                   })
                                 }
-                                onClick={e => this.deleteData(e)}
+                                onClick={null}
                               >
                                 Delete
                               </button>
