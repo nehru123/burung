@@ -4,8 +4,8 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const path = require("path");
-const cors = require('cors')
-const multer = require('multer');
+const cors = require("cors");
+const multer = require("multer");
 
 const app = express();
 var nameFile = null;
@@ -18,13 +18,13 @@ var nameFile = null;
 app.use(cors());
 app.use(
   bodyParser.urlencoded({
-    extended: true
+    extended: true,
   })
 );
 app.use(bodyParser.json());
 
 // Routes
-const user = require("./routes/api/User");
+const user = require("./routes/api/user");
 const burung = require("./routes/api/burung");
 const gallery = require("./routes/api/gallery");
 const report = require("./routes/api/report");
@@ -35,6 +35,8 @@ const batchlog = require("./routes/api/batchlog");
 const image = require("./routes/api/image");
 // const karyawan = require("./routes/api/employees");
 // const profile = require("./routes/api/profile");
+
+// static assets
 
 // DB Config
 const db = require("./config/keys").mongoURI;
@@ -56,10 +58,10 @@ const db = require("./config/keys").mongoURI;
 
 mongoose
   .connect(db, {
-    useNewUrlParser: true
+    useNewUrlParser: true,
   })
   .then(() => console.log("MongoDB Connected"))
-  .catch(err => console.log(err));
+  .catch((err) => console.log(err));
 
 // Passport Middleware
 app.use(passport.initialize());
@@ -77,8 +79,8 @@ app.use("/api/breeding", breeding);
 app.use("/api/batch", batch);
 app.use("/api/batchlog", batchlog);
 app.use("/api/image", image);
-app.use('/img', express.static('./client/src/components/img/uploads/'));
-app.use('/audio', express.static('./client/src/components/audio/uploads/'));
+app.use("/img", express.static("./client/src/components/img/uploads/"));
+app.use("/audio", express.static("./client/src/components/audio/uploads/"));
 // app.use("/api/employees", karyawan);
 // app.use("/api/profile", profile);
 
@@ -94,105 +96,104 @@ if (process.env.NODE_ENV === "production") {
 // middlewares
 // Set storage engine
 const storage = multer.diskStorage({
-    destination: './client/src/components/img/uploads/',
-    filename: function (req, file, cb) {        
-        // null as first argument means no error
-        nameFile = Date.now() + '-' + file.originalname 
-        cb(null, nameFile)
-    }
-})
+  destination: "./client/src/components/img/uploads/",
+  filename: function (req, file, cb) {
+    // null as first argument means no error
+    nameFile = Date.now() + "-" + file.originalname;
+    cb(null, nameFile);
+  },
+});
 const storageau = multer.diskStorage({
-    destination: './client/src/components/audio/uploads/',
-    filename: function (req, file, cb) {        
-        // null as first argument means no error
-        nameFile = Date.now() + '-' + file.originalname 
-        cb(null, nameFile)
-    }
-})
+  destination: "./client/src/components/audio/uploads/",
+  filename: function (req, file, cb) {
+    // null as first argument means no error
+    nameFile = Date.now() + "-" + file.originalname;
+    cb(null, nameFile);
+  },
+});
 // Init upload
 const upload = multer({
-    storage: storage, 
-    limits: {
-        fileSize: 1000000
-    },
-    fileFilter: function (req, file, cb) {
-        sanitizeFile(file, cb);
-    }
-}).single('files')
+  storage: storage,
+  limits: {
+    fileSize: 1000000,
+  },
+  fileFilter: function (req, file, cb) {
+    sanitizeFile(file, cb);
+  },
+}).single("files");
 const uploadau = multer({
-    storage: storageau, 
-    limits: {
-        fileSize: 1000000
-    },
-    fileFilter: function (req, file, cb) {
-        sanitizeFileAudio(file, cb);
-    }
-}).single('files')
+  storage: storageau,
+  limits: {
+    fileSize: 1000000,
+  },
+  fileFilter: function (req, file, cb) {
+    sanitizeFileAudio(file, cb);
+  },
+}).single("files");
 
 // Handle the upload route
-app.post('/upload', (req, res) => {
-    // res.send('done');
-    upload(req, res, (err) => {
-        if (err){ 
-            return res.status(200).json({ success: false, data: err });
-        }else{
-            // If file is not selected
-            if (req.file == undefined) {
-              return res.status(200).json({ success: false, data: nameFile });
-            }else{
-              return res.status(200).json({ success: true, data: nameFile });
-            }
-        }
-    
-    })
-})
-app.post('/uploadau', (req, res) => {
-    // res.send('done');
-    uploadau(req, res, (err) => {
-        if (err){ 
-            return res.status(200).json({ success: false, data: err });
-        }else{
-            // If file is not selected
-            if (req.file == undefined) {
-              return res.status(200).json({ success: false, data: nameFile });
-            }else{
-              return res.status(200).json({ success: true, data: nameFile });
-            }
-        }
-    
-    })
-})
+app.post("/upload", (req, res) => {
+  // res.send('done');
+  upload(req, res, (err) => {
+    if (err) {
+      return res.status(200).json({ success: false, data: err });
+    } else {
+      // If file is not selected
+      if (req.file == undefined) {
+        return res.status(200).json({ success: false, data: nameFile });
+      } else {
+        return res.status(200).json({ success: true, data: nameFile });
+      }
+    }
+  });
+});
+app.post("/uploadau", (req, res) => {
+  // res.send('done');
+  uploadau(req, res, (err) => {
+    if (err) {
+      return res.status(200).json({ success: false, data: err });
+    } else {
+      // If file is not selected
+      if (req.file == undefined) {
+        return res.status(200).json({ success: false, data: nameFile });
+      } else {
+        return res.status(200).json({ success: true, data: nameFile });
+      }
+    }
+  });
+});
 function sanitizeFile(file, cb) {
-    // Define the allowed extension
-    let fileExts = ['png', 'jpg', 'jpeg', 'gif']
-    // Check allowed extensions
-    let isAllowedExt = fileExts.includes(file.originalname.split('.')[1].toLowerCase());
-    // Mime type must be an image
-    let isAllowedMimeType = file.mimetype.startsWith("image/")
-    if (isAllowedExt && isAllowedMimeType) {
-        return cb(null, true) // no errors
-    }
-    else {
-        // pass error msg to callback, which can be displaye in frontend
-        cb('Error: File type not allowed or to large (Max 1MB)!')
-    }
+  // Define the allowed extension
+  let fileExts = ["png", "jpg", "jpeg", "gif"];
+  // Check allowed extensions
+  let isAllowedExt = fileExts.includes(
+    file.originalname.split(".")[1].toLowerCase()
+  );
+  // Mime type must be an image
+  let isAllowedMimeType = file.mimetype.startsWith("image/");
+  if (isAllowedExt && isAllowedMimeType) {
+    return cb(null, true); // no errors
+  } else {
+    // pass error msg to callback, which can be displaye in frontend
+    cb("Error: File type not allowed or to large (Max 1MB)!");
+  }
 }
 function sanitizeFileAudio(file, cb) {
-    // Define the allowed extension
-    let fileExts = ['mp3', 'mpeg']
-    // Check allowed extensions
-    let isAllowedExt = fileExts.includes(file.originalname.split('.')[1].toLowerCase());
-    // Mime type must be an image
-    let isAllowedMimeType = file.mimetype.startsWith("audio/")
-    if (isAllowedExt && isAllowedMimeType) {
-        return cb(null, true) // no errors
-    }
-    else {
-        // pass error msg to callback, which can be displaye in frontend
-        cb('Error: File type not allowed or to large (Max 1MB)!')
-    }
+  // Define the allowed extension
+  let fileExts = ["mp3", "mpeg"];
+  // Check allowed extensions
+  let isAllowedExt = fileExts.includes(
+    file.originalname.split(".")[1].toLowerCase()
+  );
+  // Mime type must be an image
+  let isAllowedMimeType = file.mimetype.startsWith("audio/");
+  if (isAllowedExt && isAllowedMimeType) {
+    return cb(null, true); // no errors
+  } else {
+    // pass error msg to callback, which can be displaye in frontend
+    cb("Error: File type not allowed or to large (Max 1MB)!");
+  }
 }
-
 
 const port = process.env.PORT || 5000;
 
