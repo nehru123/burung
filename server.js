@@ -24,7 +24,7 @@ app.use(
 app.use(bodyParser.json());
 
 // Routes
-const user = require("./routes/api/user");
+const user = require("./routes/api/User");
 const burung = require("./routes/api/burung");
 const gallery = require("./routes/api/gallery");
 const report = require("./routes/api/report");
