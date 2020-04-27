@@ -9,14 +9,11 @@ const multer = require("multer");
 
 const app = express();
 var nameFile = null;
-app.use(function (req, res, next) {
+/*app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
-});
+});*/
 // Body Parser
 app.use(cors());
 app.use(
@@ -46,27 +43,27 @@ const image = require("./routes/api/image");
 // DB Config
 const db = require("./config/keys").mongoURI;
 
-// // Connect to MongoDB
-// mongoose.connect(db, { useNewUrlParser: false });
+// Connect to MongoDB
+mongoose.connect(db, { useNewUrlParser: false });
 
-// mongoose.connection
-//   .once("open", () => {
-//     console.log("====================================");
-//     console.log("mongoDB connected");
-//     console.log("====================================");
-//   })
-//   .on("error", err => {
-//     console.log("====================================");
-//     console.log("error : ", err);
-//     console.log("====================================");
-//   });
-
-mongoose
-  .connect(db, {
-    useNewUrlParser: true,
+mongoose.connection
+  .once("open", () => {
+    console.log("====================================");
+    console.log("mongoDB connected");
+    console.log("====================================");
   })
-  .then(() => console.log("MongoDB Connected"))
-  .catch((err) => console.log(err));
+  .on("error", (err) => {
+    console.log("====================================");
+    console.log("error : ", err);
+    console.log("====================================");
+  });
+
+// mongoose
+//   .connect(db, {
+//     useNewUrlParser: true,
+//   })
+//   .then(() => console.log("MongoDB Connected"))
+//   .catch((err) => console.log(err));
 
 // Passport Middleware
 app.use(passport.initialize());
