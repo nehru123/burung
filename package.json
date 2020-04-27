@@ -2,6 +2,10 @@
   "name": "kenariservice",
   "version": "1.0.0",
   "description": "kenari",
+  "engines": {
+    "npm": "6.14.4",
+    "node": "v12.16.2"
+  },
   "main": "server.js",
   "scripts": {
     "dev": "concurrently \"npm run server\" \"npm run client\"",
