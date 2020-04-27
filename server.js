@@ -72,7 +72,7 @@ require("./config/passport")(passport);
 // use routes
 app.use("/api/users", user);
 app.use("/api/burung", burung);
-app.use("/api/gallery", gallery);
+app.use("/api/Gallery", gallery);
 app.use("/api/report", report);
 app.use("/api/finance", finance);
 app.use("/api/breeding", breeding);
