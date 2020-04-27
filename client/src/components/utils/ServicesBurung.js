@@ -1,30 +1,31 @@
-import axios from 'axios'
+import axios from "axios";
 
 const api = axios.create({
-    baseURL: 'http://localhost:5000/api/burung',
-})
+  baseURL: "http://localhost:5000/api/burung/getburung",
+});
 const apimg = axios.create({
-    baseURL: 'http://localhost:5000',
-})
+  baseURL: "http://localhost:5000",
+});
 
-export const insertBird = payload => api.post(`/add`, payload)
-export const getAllBirds = () => api.get(`/getburung`)
-export const updateBirdById = (id, payload) => api.put(`/update/${id}`, payload)
-export const deleteBirdById = id => api.delete(`/delete/${id}`)
-export const getBirdById = id => api.get(`/find/${id}`)
-export const getBirdByName = id => api.get(`/checkburung/${id}`)
-export const getBirdReportById = id => api.get(`/findReport/${id}`)
-export const upload = payload => apimg.post(`/upload`, payload)
+export const insertBird = (payload) => api.post(`/add`, payload);
+export const getAllBirds = () => api.get(`/getburung`);
+export const updateBirdById = (id, payload) =>
+  api.put(`/update/${id}`, payload);
+export const deleteBirdById = (id) => api.delete(`/delete/${id}`);
+export const getBirdById = (id) => api.get(`/find/${id}`);
+export const getBirdByName = (id) => api.get(`/checkburung/${id}`);
+export const getBirdReportById = (id) => api.get(`/findReport/${id}`);
+export const upload = (payload) => apimg.post(`/upload`, payload);
 
 const apis = {
-    insertBird,
-    getAllBirds,
-    updateBirdById,
-    deleteBirdById,
-    getBirdById,
-    getBirdByName,
-    upload,
-    getBirdReportById
-}
+  insertBird,
+  getAllBirds,
+  updateBirdById,
+  deleteBirdById,
+  getBirdById,
+  getBirdByName,
+  upload,
+  getBirdReportById,
+};
 
-export default apis
+export default apis;
