@@ -24,6 +24,7 @@ app.use(
 app.use(bodyParser.json());
 
 // Routes
+
 const user = require("./routes/api/User");
 const burung = require("./routes/api/burung");
 const gallery = require("./routes/api/Gallery");
@@ -33,6 +34,17 @@ const breeding = require("./routes/api/breeding");
 const batch = require("./routes/api/batch");
 const batchlog = require("./routes/api/batchlog");
 const image = require("./routes/api/image");
+
+const user = require("./routes/api/user");
+const burung = require("./routes/api/burung");
+const gallery = require("./routes/api/Gallery");
+const report = require("./routes/api/report");
+const finance = require("./routes/api/finance");
+const breeding = require("./routes/api/breeding");
+const batch = require("./routes/api/batch");
+const batchlog = require("./routes/api/batchlog");
+const image = require("./routes/api/image");
+
 // const karyawan = require("./routes/api/employees");
 // const profile = require("./routes/api/profile");
 
