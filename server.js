@@ -26,7 +26,7 @@ app.use(bodyParser.json());
 // Routes
 const user = require("./routes/api/User");
 const burung = require("./routes/api/burung");
-const gallery = require("./routes/api/gallery");
+const Gallery = require("./routes/api/Gallery");
 const report = require("./routes/api/report");
 const finance = require("./routes/api/finance");
 const breeding = require("./routes/api/breeding");
@@ -72,7 +72,7 @@ require("./config/passport")(passport);
 // use routes
 app.use("/api/users", user);
 app.use("/api/burung", burung);
-app.use("/api/gallery", gallery);
+app.use("/api/Gallery", Gallery);
 app.use("/api/report", report);
 app.use("/api/finance", finance);
 app.use("/api/breeding", breeding);
