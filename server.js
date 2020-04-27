@@ -38,7 +38,7 @@ const image = require("./routes/api/image");
 // const karyawan = require("./routes/api/employees");
 // const profile = require("./routes/api/profile");
 
-// static assets
+// static assets bro
 
 // DB Config
 const db = require("./config/keys").mongoURI;
