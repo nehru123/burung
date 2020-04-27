@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:5000/api/burung/getburung",
+  baseURL: "https://burung-nehru.herokuapp.com/FarmManagement",
 });
 const apimg = axios.create({
   baseURL: "http://localhost:5000",
