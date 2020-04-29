@@ -145,8 +145,6 @@ export default class LihatBurung extends Component {
                   <p className="card-text">{data.deskripsi}</p>
                   <p>Jenis :{data.jenis}</p>
                   <hr></hr>
-                  <p>Umur : {data.umur}</p>
-                  <hr></hr>
                   <p>Warna : {data.warna}</p>
                   <hr></hr>
                   <p>Jenis kelamin : {data.jenis_kelamin}</p>

@@ -41,15 +41,15 @@ const Container = styled.nav`
 export default class LihatBurung extends Component {
   state = {
     path: "http://localhost:5000/img/",
-    data: [],
+    data: []
   };
 
   componentDidMount = async () => {
     var query = window.location.search.substring(1);
-    await api.getBirdById(query).then((bird) => {
+    await api.getBirdById(query).then(bird => {
       console.log(bird);
       this.setState({
-        data: bird.data,
+        data: bird.data
       });
     });
   };
@@ -93,7 +93,9 @@ export default class LihatBurung extends Component {
                   <p>Jenis kelamin : {data.jenis_kelamin}</p>
                   <hr></hr>
                   <p className="card-text">
-                    <small className="text-muted"></small>
+                    <small className="text-muted">
+                      Last updated 3 mins ago
+                    </small>
                   </p>
                 </div>
               </div>
