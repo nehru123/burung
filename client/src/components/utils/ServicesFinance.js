@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:5000/api/finance"
+  baseURL: "/api/finance"
 });
 
 export const insertFinanceIn = payload => api.post(`/addPendapatan`, payload);

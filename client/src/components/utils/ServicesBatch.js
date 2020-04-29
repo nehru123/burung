@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-    baseURL: 'http://localhost:5000/api/batch',
+    baseURL: '/api/batch',
 })
 
 export const insertBatch = payload => api.post(`/add`, payload)

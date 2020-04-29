@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-    baseURL: 'http://localhost:5000/api/breeding',
+    baseURL: '/api/breeding',
 })
 
 export const insertBreeding = payload => api.post(`/add`, payload)

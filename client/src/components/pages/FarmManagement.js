@@ -80,7 +80,7 @@ const Container = styled.nav`
 `;
 export default class FarmManagement extends Component {
   state = {
-    path: "http://localhost:5000/img/",
+    path: "/img/",
     name: "",
     nameUp: "",
     deskripsi: "",

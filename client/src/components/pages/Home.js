@@ -39,7 +39,7 @@ const Container = styled.div`
 
 export default class Home extends Component {
   state = {
-    path: "http://localhost:5000/img/",
+    path: "/img/",
     data: []
   };
   // when component mounts, first thing it does is fetch all existing data in our db

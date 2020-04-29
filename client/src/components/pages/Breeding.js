@@ -76,7 +76,7 @@ const Container = styled.nav`
 `;
 export default class Breeding extends Component {
   state = {
-    path: "http://localhost:5000/img/",
+    path: "/img/",
     idbetina: "",
     idjantan: "",
     deskirpsi: "",

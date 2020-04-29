@@ -18,7 +18,7 @@ const Contaner = styled.nav`
 
 export default class Galery extends Component {
   state = {
-    path: "http://localhost:5000/img/",
+    path: "/img/",
     name: "",
     namaBurung: "",
     deskripsi: "",
