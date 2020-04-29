@@ -621,7 +621,7 @@ export default class FarmManagement extends Component {
                               onChange={(e) => this.onChange(e)}
                               value={this.state.jenis_kelamin}
                             >
-                              <option selected>Choose</option>
+                              <option selected>Pilih Jenis kelamin</option>
                               <option value="Jantan">Jantan</option>
                               <option value="Betina">Betina</option>
                             </select>
