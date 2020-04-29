@@ -1,10 +1,10 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:5000/api/burung",
+  baseURL: "/api/burung",
 });
 const apimg = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "",
 });
 
 export const insertBird = (payload) => api.post(`/add`, payload);
