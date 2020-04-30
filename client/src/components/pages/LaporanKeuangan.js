@@ -50,7 +50,9 @@ export default class LaporanKeuangan extends Component {
       });
     });
     await api.getSaldo().then(saldo => {
-      document.getElementById('saldo').innerHTML = saldo.data.data.saldo;
+      if (saldo.data.data.saldo != null) {
+        document.getElementById('saldo').innerHTML = saldo.data.data.saldo;
+      }
     });
     await api.getAllBirds().then(bird => {
       console.log(bird);

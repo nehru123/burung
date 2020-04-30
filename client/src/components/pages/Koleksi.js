@@ -21,7 +21,7 @@ const Container = styled.nav`
 
 export default class Koleksi extends Component {
   state = {
-    path: "/img/",
+    path: "http://localhost:5000/img/",
     judul: window.location.search.substring(1),
     data: [],
   };

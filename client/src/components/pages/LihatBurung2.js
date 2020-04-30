@@ -45,28 +45,28 @@ export default class LihatBurung extends Component {
   state = {
     path: "/img/",
     data: [],
-    file: [],
+    file: []
   };
 
   componentDidMount = async () => {
     var query = window.location.search.substring(1);
-    await api.getBirdById(query).then((bird) => {
+    await api.getBirdById(query).then(bird => {
       console.log(bird);
       this.setState({
-        data: bird.data,
+        data: bird.data
       });
     });
-    await api.getBirdReportById(query).then((bird) => {
+    await api.getBirdReportById(query).then(bird => {
       console.log(bird);
       this.setState({
-        file: bird.data.data,
+        file: bird.data.data
       });
     });
   };
 
   onChange({ target }) {
     this.setState({
-      [target.name]: target.value,
+      [target.name]: target.value
     });
   }
   searchReport({ target }) {
@@ -112,7 +112,7 @@ export default class LihatBurung extends Component {
       "September",
       "October",
       "November",
-      "December",
+      "December"
     ];
     var d = null;
     return (
@@ -145,8 +145,6 @@ export default class LihatBurung extends Component {
                   <p className="card-text">{data.deskripsi}</p>
                   <p>Jenis :{data.jenis}</p>
                   <hr></hr>
-                  <p>Umur : {data.umur}</p>
-                  <hr></hr>
                   <p>Warna : {data.warna}</p>
                   <hr></hr>
                   <p>Jenis kelamin : {data.jenis_kelamin}</p>
@@ -173,7 +171,7 @@ export default class LihatBurung extends Component {
                   placeholder="Cari Log"
                   aria-label=""
                   id="search"
-                  onChange={(e) => this.searchReport(e)}
+                  onChange={e => this.searchReport(e)}
                   aria-describedby="basic-addon2"
                 ></input>
               </div>
@@ -195,7 +193,7 @@ export default class LihatBurung extends Component {
                 {file.length <= 0
                   ? "NO DB ENTRIES YET"
                   : file.map(
-                      (fil) => (
+                      fil => (
                         (d = new Date(fil.tanggal)),
                         (
                           <tr>

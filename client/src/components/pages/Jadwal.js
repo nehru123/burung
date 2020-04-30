@@ -21,7 +21,7 @@ const Container = styled.nav`
 
 export default class Jadwal extends Component {
   state = {
-    path: "http://localhost:5000/img/",
+    path: "/img/",
     nama: "",
     tanggal: "",
     jam: "",
