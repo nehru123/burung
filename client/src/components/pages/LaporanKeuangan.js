@@ -298,7 +298,7 @@ export default class LaporanKeuangan extends Component {
                           </select>
                         </div>
                         <div className="form-group col-md-6">
-                          <label for="inputCity">pembeli</label>
+                          <label for="inputCity">Pembeli</label>
                           <input
                             type="text"
                             className="form-control"
