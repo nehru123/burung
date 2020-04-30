@@ -40,7 +40,7 @@ const Container = styled.nav`
 
 export default class LihatBurung extends Component {
   state = {
-    path: "http://localhost:5000/img/",
+    path: "/img/",
     data: [],
   };
 
