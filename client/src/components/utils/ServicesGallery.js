@@ -1,10 +1,10 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "/api/gallery",
+  baseURL: "/api/Gallery",
 });
 const apiup = axios.create({
-  baseURL: "/api/gallery",
+  baseURL: "/api/Gallery",
 });
 
 export const insertGallery = (payload) => api.post(`/add`, payload);
