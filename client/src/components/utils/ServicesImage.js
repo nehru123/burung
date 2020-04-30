@@ -1,11 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-<<<<<<< HEAD
   baseURL: "/api/image",
-=======
-  baseURL: "/api/image"
->>>>>>> b000c7cc387f06065e903ca3cf703dceabb9b4ca
 });
 const apiup = axios.create({
   baseURL: "",

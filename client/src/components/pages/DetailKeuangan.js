@@ -36,23 +36,23 @@ export default class DetailKeuangan extends Component {
     intervalIsSet: false,
     idToDelete: null,
     idToUpdate: null,
-    objectToUpdate: null
+    objectToUpdate: null,
   };
   componentDidMount = async () => {
     this.setState({ isLoading: true });
     var query = window.location.search.substring(1);
-    await api.getReportsByIdMonth(query).then(report => {
+    await api.getReportsByIdMonth(query).then((report) => {
       console.log(report);
       this.setState({
         file: report.data.data,
-        isLoading: false
+        isLoading: false,
       });
     });
-    await api.getAllBirds().then(bird => {
+    await api.getAllBirds().then((bird) => {
       console.log(bird);
       this.setState({
         data: bird.data.data,
-        isLoading: false
+        isLoading: false,
       });
     });
     // await api.getSaldo().then(saldo => {
@@ -68,25 +68,25 @@ export default class DetailKeuangan extends Component {
 
   onChange({ target }) {
     this.setState({
-      [target.name]: target.value
+      [target.name]: target.value,
     });
   }
 
   getDataFromDb = () => {
-    api.getAllBirds().then(bird => {
+    api.getAllBirds().then((bird) => {
       this.setState({
-        data: bird.data.data
+        data: bird.data.data,
       });
     });
-    api.getSaldo().then(saldo => {
-      document.getElementById('saldo').innerHTML = saldo.data.data.saldo;
+    api.getSaldo().then((saldo) => {
+      document.getElementById("saldo").innerHTML = saldo.data.data.saldo;
     });
   };
 
   getReportFromDb = () => {
-    api.getAllReports().then(report => {
+    api.getAllReports().then((report) => {
       this.setState({
-        file: report.data.data
+        file: report.data.data,
       });
     });
   };
@@ -130,10 +130,10 @@ export default class DetailKeuangan extends Component {
     this.setState({
       jumlah: jum,
       filter: target.value,
-      tahun: target.value
+      tahun: target.value,
     });
   }
-  print = async e => {
+  print = async (e) => {
     var divToPrint = document.getElementById("listJournal");
     var newWin = window.open("");
     newWin.document.write(divToPrint.outerHTML);
@@ -141,21 +141,21 @@ export default class DetailKeuangan extends Component {
     newWin.close();
   };
 
-  addReport = async e => {
+  addReport = async (e) => {
     e.preventDefault();
     const payload = {
       tanggal: this.state.tanggal,
       idBird: this.state.idBird,
       pembeli: this.state.pembeli,
-      harga: this.state.harga
+      harga: this.state.harga,
     };
 
-    await api.insertFinance(payload).then(res => {
+    await api.insertFinance(payload).then((res) => {
       window.alert(`Report inserted successfully`);
       this.getReportFromDb();
     });
 
-    await api.updateBirdById(this.state.idBird).then(res => {
+    await api.updateBirdById(this.state.idBird).then((res) => {
       this.getDataFromDb();
     });
     //registerburung(burungData);
@@ -180,7 +180,7 @@ export default class DetailKeuangan extends Component {
       "September",
       "October",
       "November",
-      "December"
+      "December",
     ];
     var d = null;
     return (
@@ -241,7 +241,7 @@ export default class DetailKeuangan extends Component {
                             type="date"
                             className="form-control"
                             name="tanggal"
-                            onChange={e => this.onChange(e)}
+                            onChange={(e) => this.onChange(e)}
                             value={this.state.tanggal}
                           ></input>
                         </div>
@@ -273,7 +273,7 @@ export default class DetailKeuangan extends Component {
                           id="exampleFormControlTextarea1"
                           rows="3"
                           name="keterangan"
-                          onChange={e => this.onChange(e)}
+                          onChange={(e) => this.onChange(e)}
                           value=""
                         ></textarea>
                       </div>
@@ -285,7 +285,7 @@ export default class DetailKeuangan extends Component {
                             className="form-control"
                             id="inputCity"
                             name="harga"
-                            onChange={e => this.onChange(e)}
+                            onChange={(e) => this.onChange(e)}
                             value={this.state.harga}
                           ></input>
                         </div>
@@ -296,7 +296,7 @@ export default class DetailKeuangan extends Component {
                             name="jenisLaporan"
                             className="form-control"
                             id="inputCity"
-                            onChange={e => this.onChange(e)}
+                            onChange={(e) => this.onChange(e)}
                             value={this.state.jenis}
                           >
                             <option selected>Choose</option>
@@ -317,7 +317,7 @@ export default class DetailKeuangan extends Component {
                         <button
                           type="button"
                           className="btn btn-success"
-                          onClick={e => this.addReport(e)}
+                          onClick={(e) => this.addReport(e)}
                         >
                           Tambahkan
                         </button>
@@ -331,49 +331,9 @@ export default class DetailKeuangan extends Component {
         </div>
         <div className="container">
           <div className="form-row" style={{ justifyContent: "space-between" }}>
-            <div className="form-group col-md-3">
-              {/* <label for="inputState">Laporan Penjualan Perbulan</label> */}
-              <select
-                type="text"
-                name="filter"
-                className="form-control"
-                id="inputState"
-                onChange={e => this.searchReport(e)}
-              >
-                <option value="" selected>
-                  Plilih Bulan
-                </option>
-                <option value="January">Januari</option>
-                <option value="February">Februari</option>
-                <option value="Maret">Maret</option>
-                <option value="April">April</option>
-                <option value="Mei">Mei</option>
-                <option value="Juni">Juni</option>
-                <option value="Juli">July</option>
-                <option value="Agustus">Agustus</option>
-              </select>
-              {/* <button type="button" className="btn btn-success">
-                Hitung Total Penjualan
-              </button> */}
-            </div>
+            <div className="form-group col-md-3"></div>
 
-            <div className="form-group col-md-3">
-              {/* <label for="inputState"></label> */}
-              <select
-                type="text"
-                name="tahun"
-                className="form-control"
-                id="inputState"
-                onChange={e => this.searchReport(e)}
-              >
-                <option value="" selected>
-                  Plilih Tahun
-                </option>
-                <option value="2020">2020</option>
-                <option value="2019">2019</option>
-                <option value="2018">2018</option>
-              </select>
-            </div>
+            <div className="form-group col-md-3"></div>
             <div className="form-group col-md-4">
               {/* <h5 style={{}}>Total Penjualan Bulan {filter} Adalah</h5>
               <h5 style={{ fontWeight: "bold" }}>Rp.<label id="saldo"></label>00</h5> */}
@@ -387,7 +347,7 @@ export default class DetailKeuangan extends Component {
               aria-label=""
               aria-describedby="basic-addon2"
               id="search"
-              onChange={e => this.searchReport(e)}
+              onChange={(e) => this.searchReport(e)}
             ></input>
             <div className="input-group-append"></div>
           </div>
@@ -404,7 +364,7 @@ export default class DetailKeuangan extends Component {
               {file.length <= 0
                 ? "NO DB ENTRIES YET"
                 : file.map(
-                    fil => (
+                    (fil) => (
                       (d = new Date(fil.tanggal)),
                       (
                         <tr>
