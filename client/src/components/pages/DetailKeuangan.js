@@ -332,47 +332,12 @@ export default class DetailKeuangan extends Component {
         <div className="container">
           <div className="form-row" style={{ justifyContent: "space-between" }}>
             <div className="form-group col-md-3">
-              {/* <label for="inputState">Laporan Penjualan Perbulan</label> */}
-              <select
-                type="text"
-                name="filter"
-                className="form-control"
-                id="inputState"
-                onChange={e => this.searchReport(e)}
-              >
-                <option value="" selected>
-                  Plilih Bulan
-                </option>
-                <option value="January">Januari</option>
-                <option value="February">Februari</option>
-                <option value="Maret">Maret</option>
-                <option value="April">April</option>
-                <option value="Mei">Mei</option>
-                <option value="Juni">Juni</option>
-                <option value="Juli">July</option>
-                <option value="Agustus">Agustus</option>
-              </select>
-              {/* <button type="button" className="btn btn-success">
-                Hitung Total Penjualan
-              </button> */}
+              
+              
             </div>
 
             <div className="form-group col-md-3">
-              {/* <label for="inputState"></label> */}
-              <select
-                type="text"
-                name="tahun"
-                className="form-control"
-                id="inputState"
-                onChange={e => this.searchReport(e)}
-              >
-                <option value="" selected>
-                  Plilih Tahun
-                </option>
-                <option value="2020">2020</option>
-                <option value="2019">2019</option>
-                <option value="2018">2018</option>
-              </select>
+              
             </div>
             <div className="form-group col-md-4">
               {/* <h5 style={{}}>Total Penjualan Bulan {filter} Adalah</h5>
