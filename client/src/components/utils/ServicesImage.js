@@ -4,7 +4,7 @@ const api = axios.create({
   baseURL: "/api/image",
 });
 const apiup = axios.create({
-  baseURL: "",
+  baseURL: "/api/image",
 });
 
 export const insertImage = (payload) => api.post(`/add`, payload);
