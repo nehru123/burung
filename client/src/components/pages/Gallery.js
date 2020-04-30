@@ -326,7 +326,7 @@ export default class Gallery extends Component {
                             borderTopRightRadius: 50,
                             borderBottomRightRadius: 89,
                           }}
-                          src={this.state.path + "img/" + dat.gambar}
+                          src={this.state.path + "/img/" + dat.gambar}
                           class="bd-placeholder-img card-img-top"
                           width="100%"
                           height="225"
