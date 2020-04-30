@@ -1,13 +1,8 @@
 import axios from "axios";
 
 const api = axios.create({
-<<<<<<< HEAD
   baseURL: "/api/report",
 });
-=======
-    baseURL: '/api/report',
-})
->>>>>>> b000c7cc387f06065e903ca3cf703dceabb9b4ca
 
 export const insertReport = (payload) => api.post(`/add`, payload);
 export const getAllBirds = () => api.get(`/getburung`);
