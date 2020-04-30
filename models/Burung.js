@@ -4,51 +4,51 @@ const Schema = mongoose.Schema;
 const BurungSchema = new Schema({
   name: {
     type: String,
-    required: true,
+    required: true
   },
   deskripsi: {
     type: String,
-    default: true,
+    default: true
   },
   jenis: {
     type: String,
-    required: true,
+    required: true
   },
   tanggal: {
     type: Date,
-    required: true,
+    required: true
   },
   warna: {
     type: String,
-    required: true,
+    required: true
   },
   jenis_kelamin: {
     type: String,
-    required: true,
+    required: true
   },
   harga: {
-    type: String,
+    type: String
   },
   status: {
     type: String,
-    required: true,
+    required: true
   },
   breeding: {
     type: String,
-    required: true,
+    required: true
   },
   image1: {
     type: String,
-    required: true,
+    required: true
   },
   image2: {
     type: String,
-    required: true,
+    required: true
   },
   image3: {
     type: String,
-    required: true,
-  },
+    required: true
+  }
 });
 
 module.exports = Burung = mongoose.model("burung", BurungSchema);

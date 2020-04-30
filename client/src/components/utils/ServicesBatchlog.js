@@ -1,8 +1,13 @@
 import axios from "axios";
 
 const api = axios.create({
+<<<<<<< HEAD
   baseURL: "/api/batchlog",
 });
+=======
+    baseURL: '/api/batchlog',
+})
+>>>>>>> b000c7cc387f06065e903ca3cf703dceabb9b4ca
 
 export const insertBatchlog = (payload) => api.post(`/add`, payload);
 export const getBatchlogById = (id, payload) =>
