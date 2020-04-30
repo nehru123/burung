@@ -9,8 +9,8 @@ import { log } from "util";
 export const registerusers = (userData, history) => {
   axios
     .post("/api/users/register", userData)
-    .then(res => history.push("/login"))
-    .catch(err => {
+    .then((res) => history.push("/login"))
+    .catch((err) => {
       return err;
     });
 };
@@ -18,18 +18,18 @@ export const registerusers = (userData, history) => {
 export const registerburung = (burungData, history) => {
   axios
     .post("/api/burung/add", burungData)
-    .then(res => res.status(200).json(res.data))
-    .catch(err => {
+    .then((res) => res.status(200).json(res.data))
+    .catch((err) => {
       return err;
     });
 };
 
 // login get user token
-export const loginuser = userData => {
+export const loginuser = (userData) => {
   // dispatch(setPostLoading());
   axios
     .post("/api/users/login", userData)
-    .then(res => {
+    .then((res) => {
       // Save to local storage
       const { token } = res.data;
 
@@ -47,7 +47,7 @@ export const loginuser = userData => {
       // dispatch(setCurrentUser(decoded));
     })
     .catch(
-      err => {
+      (err) => {
         return err;
       }
       // dispatch({
@@ -60,11 +60,11 @@ export const loginuser = userData => {
 export const addPost = (postData, config) => {
   axios
     .post(`/api/posts`, postData, config)
-    .then(res => {
+    .then((res) => {
       alert("Berhasil menambahkan post!");
       return res;
     })
-    .catch(err => {
+    .catch((err) => {
       return err;
     });
 };
@@ -72,10 +72,10 @@ export const addPost = (postData, config) => {
 export const getBurung = () => {
   axios
     .get("/api/burung/getburung")
-    .then(res => {
+    .then((res) => {
       return res;
     })
-    .catch(err => {
+    .catch((err) => {
       return err;
     });
 };

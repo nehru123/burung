@@ -23,15 +23,15 @@ export default class Koleksi extends Component {
   state = {
     path: "/img/",
     judul: window.location.search.substring(1),
-    data: []
+    data: [],
   };
 
   componentDidMount = async () => {
     this.setState({ isLoading: true });
     var query = window.location.search.substring(1);
-    await api.getImage(query).then(image => {
+    await api.getImage(query).then((image) => {
       this.setState({
-        data: image.data.data
+        data: image.data.data,
       });
     });
   };
@@ -45,28 +45,28 @@ export default class Koleksi extends Component {
 
   getDataFromDb = () => {
     var query = window.location.search.substring(1);
-    api.getImage(query).then(image => {
+    api.getImage(query).then((image) => {
       this.setState({
-        data: image.data.data
+        data: image.data.data,
       });
     });
   };
 
   onChange({ target }) {
     this.setState({
-      [target.name]: target.value
+      [target.name]: target.value,
     });
   }
 
-  add = async e => {
+  add = async (e) => {
     e.preventDefault();
     if (this.state.image) {
       const payload = {
         judul: this.state.judul,
-        image: this.state.image
+        image: this.state.image,
       };
 
-      await api.insertImage(payload).then(res => {
+      await api.insertImage(payload).then((res) => {
         window.alert(`Collection successfully`);
         this.getDataFromDb();
       });
@@ -74,7 +74,7 @@ export default class Koleksi extends Component {
   };
 
   deleteData = async () => {
-    await api.deleteGById(this.state.idUp).then(res => {
+    await api.deleteGById(this.state.idUp).then((res) => {
       window.alert(`Bird deleted successfully`);
       this.getDataFromDb();
     });
@@ -85,11 +85,11 @@ export default class Koleksi extends Component {
     var image = document.getElementById(target.name).files[0];
     var formdata = new FormData();
     formdata.append("files", image, image.name);
-    await api.uploadImg(formdata).then(res => {
+    await api.uploadImg(formdata).then((res) => {
       if (res.data.success) {
         window.alert("Gambar " + target.name + " berhasil di upload");
         this.setState({
-          [target.name]: res.data.data
+          [target.name]: res.data.data,
         });
       } else {
         window.alert(res.data.data);
@@ -100,7 +100,7 @@ export default class Koleksi extends Component {
     var output = document.getElementById("output" + target.id);
     output.src = URL.createObjectURL(target.files[0]);
   };
-  fileSelectedHandler = e => {
+  fileSelectedHandler = (e) => {
     this.setState({ files: [...this.state.files, ...e.target.files] });
   };
   render() {
@@ -157,7 +157,7 @@ export default class Koleksi extends Component {
                           <input
                             type="file"
                             id="image"
-                            onChange={e => this.preview(e)}
+                            onChange={(e) => this.preview(e)}
                           />
                           <img id="outputimage" width="100px" height="100px" />
                           <div class="form-group">
@@ -165,7 +165,7 @@ export default class Koleksi extends Component {
                               type="button"
                               name="image"
                               class="btn btn-primary"
-                              onClick={e => this.uploadImage(e)}
+                              onClick={(e) => this.uploadImage(e)}
                             >
                               Upload
                             </button>
@@ -184,7 +184,7 @@ export default class Koleksi extends Component {
                             type="submit"
                             data-dismiss="modal"
                             className="btn btn-success"
-                            onClick={e => this.add(e)}
+                            onClick={(e) => this.add(e)}
                           >
                             Tambahkan
                           </button>
@@ -205,7 +205,7 @@ export default class Koleksi extends Component {
             <div class="row">
               {data.length <= 0
                 ? "NO DB ENTRIES YET"
-                : data.map(dat => (
+                : data.map((dat) => (
                     <div class="col-md-4">
                       <div
                         style={{ borderRadius: 30 }}

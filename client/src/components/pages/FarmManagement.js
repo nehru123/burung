@@ -158,9 +158,15 @@ export default class FarmManagement extends Component {
     var s = 0;
     var t = 0;
     this.state.data.map((dat) => (dat.status == 1 ? (s = s + 1) : (t = t + 1)));
+<<<<<<< HEAD
+    if (s > 0 || t > 0) {
+      document.getElementById("stock").innerHTML = s;
+      document.getElementById("jual").innerHTML = t;
+=======
     if (s>0 || t>0) {
       document.getElementById("stock").innerHTML = s;
     document.getElementById("jual").innerHTML = t;
+>>>>>>> b000c7cc387f06065e903ca3cf703dceabb9b4ca
     }
   };
 
@@ -258,9 +264,15 @@ export default class FarmManagement extends Component {
           image2: "",
           image3: "",
         });
+<<<<<<< HEAD
+        document.getElementById("outputimage1").src = null;
+        document.getElementById("outputimage2").src = null;
+        document.getElementById("outputimage3").src = null;
+=======
         document.getElementById("outputimage1").src=null;
         document.getElementById("outputimage2").src=null;
         document.getElementById("outputimage3").src=null;
+>>>>>>> b000c7cc387f06065e903ca3cf703dceabb9b4ca
       });
     } else window.alert(`Mohon isi form dengan lengkap`);
 
@@ -619,7 +631,7 @@ export default class FarmManagement extends Component {
                               onChange={(e) => this.onChange(e)}
                               value={this.state.jenis_kelamin}
                             >
-                              <option selected>Choose</option>
+                              <option selected>Pilih Jenis Kelamin</option>
                               <option value="Jantan">Jantan</option>
                               <option value="Betina">Betina</option>
                             </select>
@@ -1007,7 +1019,9 @@ export default class FarmManagement extends Component {
                                               value={this.state.jenis_kelaminUp}
                                               onChange={(e) => this.onChange(e)}
                                             >
-                                              <option selected>Choose</option>
+                                              <option selected>
+                                                Pilih Jenis Kelamin
+                                              </option>
                                               <option value="Jantan">
                                                 Jantan
                                               </option>
