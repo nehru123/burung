@@ -7,7 +7,7 @@ import assets from "../assets/f.png";
 
 const Container = styled.nav`
   .jumbotron {
-   
+    /* background-image: url("https://i.pinimg.com/originals/6b/20/16/6b201623685e7093fe7df8970b1d26b5.jpg"); */
     background-image: url("f.png");
     background-size: cover;
   }
@@ -17,7 +17,6 @@ const Container = styled.nav`
     margin: 0px auto;
     float: none;
   }
-
   .card-counter {
     box-shadow: 2px 2px 10px #dadada;
     margin: 5px;
@@ -27,37 +26,30 @@ const Container = styled.nav`
     border-radius: 5px;
     transition: 0.3s linear all;
   }
-
   .card-counter:hover {
     box-shadow: 4px 4px 20px #dadada;
     transition: 0.3s linear all;
   }
-
   .card-counter.primary {
     background-color: #007bff;
     color: #fff;
   }
-
   .card-counter.danger {
     background-color: #ef5350;
     color: #fff;
   }
-
   .card-counter.success {
     background-color: #66bb6a;
     color: #fff;
   }
-
   .card-counter.info {
     background-color: #26c6da;
     color: #fff;
   }
-
   .card-counter i {
     font-size: 5em;
     opacity: 0.2;
   }
-
   .card-counter .count-numbers {
     position: absolute;
     right: 35px;
@@ -65,7 +57,6 @@ const Container = styled.nav`
     font-size: 32px;
     display: block;
   }
-
   .card-counter .count-name {
     position: absolute;
     right: 35px;
@@ -158,15 +149,10 @@ export default class FarmManagement extends Component {
     var s = 0;
     var t = 0;
     this.state.data.map((dat) => (dat.status == 1 ? (s = s + 1) : (t = t + 1)));
-<<<<<<< HEAD
+
     if (s > 0 || t > 0) {
       document.getElementById("stock").innerHTML = s;
       document.getElementById("jual").innerHTML = t;
-=======
-    if (s>0 || t>0) {
-      document.getElementById("stock").innerHTML = s;
-    document.getElementById("jual").innerHTML = t;
->>>>>>> b000c7cc387f06065e903ca3cf703dceabb9b4ca
     }
   };
 
@@ -264,15 +250,10 @@ export default class FarmManagement extends Component {
           image2: "",
           image3: "",
         });
-<<<<<<< HEAD
+
         document.getElementById("outputimage1").src = null;
         document.getElementById("outputimage2").src = null;
         document.getElementById("outputimage3").src = null;
-=======
-        document.getElementById("outputimage1").src=null;
-        document.getElementById("outputimage2").src=null;
-        document.getElementById("outputimage3").src=null;
->>>>>>> b000c7cc387f06065e903ca3cf703dceabb9b4ca
       });
     } else window.alert(`Mohon isi form dengan lengkap`);
 
@@ -592,7 +573,6 @@ export default class FarmManagement extends Component {
                             </select>
                           </div>
                           {/* <div className="form-group col-md-12">
-
                           </div> */}
                         </div>
 
