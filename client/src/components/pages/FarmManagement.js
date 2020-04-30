@@ -7,7 +7,7 @@ import assets from "../assets/f.png";
 
 const Container = styled.nav`
   .jumbotron {
-    /* background-image: url("https://i.pinimg.com/originals/6b/20/16/6b201623685e7093fe7df8970b1d26b5.jpg"); */
+   
     background-image: url("f.png");
     background-size: cover;
   }
