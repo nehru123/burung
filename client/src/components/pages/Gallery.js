@@ -30,7 +30,7 @@ const Container = styled.nav`
 
 export default class Gallery extends Component {
   state = {
-    path: "",
+    path: "/img/",
     judul: "",
     deskripsi: "",
     audio: "",
