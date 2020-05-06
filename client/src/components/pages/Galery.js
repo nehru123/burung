@@ -18,7 +18,7 @@ const Contaner = styled.nav`
 
 export default class Galery extends Component {
   state = {
-    path: "/img/",
+    path: "",
     name: "",
     namaBurung: "",
     deskripsi: "",
@@ -44,25 +44,25 @@ export default class Galery extends Component {
     intervalIsSet: false,
     idToDelete: null,
     idToUpdate: null,
-    objectToUpdate: null
+    objectToUpdate: null,
   };
   // when component mounts, first thing it does is fetch all existing data in our db
   // then we incorporate a polling logic so that we can easily see if our db has
   // changed and implement those changes into our UI
   componentDidMount = async () => {
     this.setState({ isLoading: true });
-    await api.getAllGallery().then(galleries => {
+    await api.getAllGallery().then((galleries) => {
       console.log(galleries);
       this.setState({
         file: galleries.data.data,
-        isLoading: false
+        isLoading: false,
       });
     });
-    await api.getAllBirds().then(bird => {
+    await api.getAllBirds().then((bird) => {
       console.log(bird);
       this.setState({
         data: bird.data.data,
-        isLoading: false
+        isLoading: false,
       });
     });
   };
@@ -74,14 +74,14 @@ export default class Galery extends Component {
   }
   onChange({ target }) {
     this.setState({
-      [target.name]: target.value
+      [target.name]: target.value,
     });
   }
 
   getDataFromDb = () => {
-    api.getAllBirds().then(bird => {
+    api.getAllBirds().then((bird) => {
       this.setState({
-        data: bird.data.data
+        data: bird.data.data,
       });
     });
   };
@@ -114,17 +114,17 @@ export default class Galery extends Component {
     }
   }
 
-  add = async e => {
+  add = async (e) => {
     e.preventDefault();
 
     const payload = {
       namaBurung: this.state.namaBurung,
       judul: this.state.judul,
       deskripsi: this.state.deskripsi,
-      foto: this.state.foto
+      foto: this.state.foto,
     };
 
-    await api.insertGallery(payload).then(res => {
+    await api.insertGallery(payload).then((res) => {
       window.alert(`Collection successfully`);
       this.getDataFromDb();
     });
@@ -132,7 +132,7 @@ export default class Galery extends Component {
   };
 
   deleteData = async () => {
-    await api.deleteGById(this.state.idUp).then(res => {
+    await api.deleteGById(this.state.idUp).then((res) => {
       window.alert(`Bird deleted successfully`);
       this.getDataFromDb();
     });
@@ -143,11 +143,11 @@ export default class Galery extends Component {
     var image = document.getElementById(target.name).files[0];
     var formdata = new FormData();
     formdata.append("files", image, image.name);
-    await api.upload(formdata).then(res => {
+    await api.upload(formdata).then((res) => {
       if (res.data.success) {
         window.alert("Gambar " + target.name + " berhasil di upload");
         this.setState({
-          [target.name]: res.data.data
+          [target.name]: res.data.data,
         });
       } else {
         window.alert(res.data.data);
@@ -208,13 +208,13 @@ export default class Galery extends Component {
                             name="namaBurung"
                             className="form-control"
                             id="inputState"
-                            onChange={e => this.onChange(e)}
+                            onChange={(e) => this.onChange(e)}
                             value={this.state.namaBurung}
                           >
                             <option selected>Choose</option>
                             {data.length <= 0
                               ? "NO DB ENTRIES YET"
-                              : data.map(dat => (
+                              : data.map((dat) => (
                                   <option value={dat._id}>{dat.name}</option>
                                 ))}
                           </select>
@@ -227,7 +227,7 @@ export default class Galery extends Component {
                             name="judul"
                             className="form-control"
                             id="inputCity"
-                            onChange={e => this.onChange(e)}
+                            onChange={(e) => this.onChange(e)}
                             value={this.state.judul}
                             required
                           ></input>
@@ -243,7 +243,7 @@ export default class Galery extends Component {
                           id="exampleFormControlTextarea1"
                           rows="3"
                           name="deskripsi"
-                          onChange={e => this.onChange(e)}
+                          onChange={(e) => this.onChange(e)}
                           value={this.state.deskripsi}
                           // onChange={e => this.onChange(e)}
                           required
@@ -259,7 +259,7 @@ export default class Galery extends Component {
                               type="button"
                               name="foto"
                               class="btn btn-primary"
-                              onClick={e => this.uploadImage(e)}
+                              onClick={(e) => this.uploadImage(e)}
                             >
                               Upload
                             </button>
@@ -279,7 +279,7 @@ export default class Galery extends Component {
                           type="submit"
                           data-dismiss="modal"
                           className="btn btn-success"
-                          onClick={e => this.add(e)}
+                          onClick={(e) => this.add(e)}
                         >
                           Tambahkan
                         </button>
