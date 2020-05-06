@@ -38,28 +38,27 @@ export default class LaporanKeuangan extends Component {
     intervalIsSet: false,
     idToDelete: null,
     idToUpdate: null,
-    objectToUpdate: null
+    objectToUpdate: null,
   };
   componentDidMount = async () => {
     this.setState({ isLoading: true });
-    await api.getAllReports().then(report => {
+    await api.getAllReports().then((report) => {
       console.log(report);
       this.setState({
         file: report.data.data,
-        isLoading: false
+        isLoading: false,
       });
     });
-   
-    await api.getAllBirds().then(bird => {
+
+    await api.getAllBirds().then((bird) => {
       console.log(bird);
       this.setState({
-        
         data: bird.data.data,
-        isLoading: false
+        isLoading: false,
       });
-      await api.getSaldo().then(saldo => {
+      api.getSaldo().then((saldo) => {
         if (saldo.data.data.saldo != null) {
-          document.getElementById('saldo').innerHTML = saldo.data.data.saldo;
+          document.getElementById("saldo").innerHTML = saldo.data.data.saldo;
         }
       });
     });
@@ -73,25 +72,25 @@ export default class LaporanKeuangan extends Component {
 
   onChange({ target }) {
     this.setState({
-      [target.name]: target.value
+      [target.name]: target.value,
     });
   }
 
   getDataFromDb = () => {
-    api.getAllBirds().then(bird => {
+    api.getAllBirds().then((bird) => {
       this.setState({
-        data: bird.data.data
+        data: bird.data.data,
       });
     });
-    api.getSaldo().then(saldo => {
-      document.getElementById('saldo').innerHTML = saldo.data.data.saldo;
+    api.getSaldo().then((saldo) => {
+      document.getElementById("saldo").innerHTML = saldo.data.data.saldo;
     });
   };
 
   getReportFromDb = () => {
-    api.getAllReports().then(report => {
+    api.getAllReports().then((report) => {
       this.setState({
-        file: report.data.data
+        file: report.data.data,
       });
     });
   };
@@ -135,10 +134,10 @@ export default class LaporanKeuangan extends Component {
     this.setState({
       jumlah: jum,
       filter: target.value,
-      tahun: target.value
+      tahun: target.value,
     });
   }
-  print = async e => {
+  print = async (e) => {
     var divToPrint = document.getElementById("listJournal");
     var newWin = window.open("");
     newWin.document.write(divToPrint.outerHTML);
@@ -146,35 +145,35 @@ export default class LaporanKeuangan extends Component {
     newWin.close();
   };
 
-  addReportIn = async e => {
+  addReportIn = async (e) => {
     e.preventDefault();
     const payload = {
       tanggal: this.state.tanggal,
       idBird: this.state.idBird,
       pembeli: this.state.pembeli,
       nominal: this.state.nominal,
-      keterangan: this.state.keterangan
+      keterangan: this.state.keterangan,
     };
 
-    await api.insertFinanceIn(payload).then(res => {
+    await api.insertFinanceIn(payload).then((res) => {
       window.alert(`Report inserted successfully`);
       this.getReportFromDb();
     });
 
-    await api.updateBirdById(this.state.idBird).then(res => {
+    await api.updateBirdById(this.state.idBird).then((res) => {
       this.getDataFromDb();
     });
     //registerburung(burungData);
   };
-  addReportOut = async e => {
+  addReportOut = async (e) => {
     e.preventDefault();
     const payload = {
       tanggal: this.state.tanggal,
       nominal: this.state.nominal,
-      keterangan: this.state.keterangan
+      keterangan: this.state.keterangan,
     };
 
-    await api.insertFinanceOut(payload).then(res => {
+    await api.insertFinanceOut(payload).then((res) => {
       window.alert(`Report inserted successfully`);
       this.getReportFromDb();
       this.getDataFromDb();
@@ -200,7 +199,7 @@ export default class LaporanKeuangan extends Component {
       "September",
       "October",
       "November",
-      "December"
+      "December",
     ];
     var d = null;
     return (
@@ -276,7 +275,7 @@ export default class LaporanKeuangan extends Component {
                             type="date"
                             className="form-control"
                             name="tanggal"
-                            onChange={e => this.onChange(e)}
+                            onChange={(e) => this.onChange(e)}
                             value={this.state.tanggal}
                           ></input>
                         </div>
@@ -288,13 +287,13 @@ export default class LaporanKeuangan extends Component {
                             name="idBird"
                             className="form-control"
                             id="inputState"
-                            onChange={e => this.onChange(e)}
+                            onChange={(e) => this.onChange(e)}
                             value={this.state.idBird}
                           >
                             <option selected>Choose</option>
                             {data.length <= 0
                               ? "NO DB ENTRIES YET"
-                              : data.map(dat => (
+                              : data.map((dat) => (
                                   <option value={dat._id}>{dat.name}</option>
                                 ))}
                           </select>
@@ -306,7 +305,7 @@ export default class LaporanKeuangan extends Component {
                             className="form-control"
                             id="inputCity"
                             name="pembeli"
-                            onChange={e => this.onChange(e)}
+                            onChange={(e) => this.onChange(e)}
                             // value="#"
                           ></input>
                         </div>
@@ -320,7 +319,7 @@ export default class LaporanKeuangan extends Component {
                             className="form-control"
                             id="inputCity"
                             name="nominal"
-                            onChange={e => this.onChange(e)}
+                            onChange={(e) => this.onChange(e)}
                             value={this.state.nominal}
                           ></input>
                         </div>
@@ -336,7 +335,7 @@ export default class LaporanKeuangan extends Component {
                           rows="3"
                           type="text"
                           name="keterangan"
-                          onChange={e => this.onChange(e)}
+                          onChange={(e) => this.onChange(e)}
                           value={this.state.keterangan}
                         ></textarea>
                       </div>
@@ -352,7 +351,7 @@ export default class LaporanKeuangan extends Component {
                         <button
                           type="button"
                           className="btn btn-success"
-                          onClick={e => this.addReportIn(e)}
+                          onClick={(e) => this.addReportIn(e)}
                         >
                           Tambahkan
                         </button>
@@ -396,7 +395,7 @@ export default class LaporanKeuangan extends Component {
                         type="date"
                         className="form-control"
                         name="tanggal"
-                        onChange={e => this.onChange(e)}
+                        onChange={(e) => this.onChange(e)}
                         value={this.state.tanggal}
                       ></input>
                     </div>
@@ -409,7 +408,7 @@ export default class LaporanKeuangan extends Component {
                           className="form-control"
                           id="inputCity"
                           name="nominal"
-                          onChange={e => this.onChange(e)}
+                          onChange={(e) => this.onChange(e)}
                           value={this.state.nominal}
                         ></input>
                       </div>
@@ -423,7 +422,7 @@ export default class LaporanKeuangan extends Component {
                       rows="3"
                       type="text"
                       name="keterangan"
-                      onChange={e => this.onChange(e)}
+                      onChange={(e) => this.onChange(e)}
                       value={this.state.keterangan}
                     ></textarea>
                   </div>
@@ -439,7 +438,7 @@ export default class LaporanKeuangan extends Component {
                     <button
                       type="button"
                       className="btn btn-success"
-                      onClick={e => this.addReportOut(e)}
+                      onClick={(e) => this.addReportOut(e)}
                     >
                       Tambahkan
                     </button>
@@ -458,7 +457,7 @@ export default class LaporanKeuangan extends Component {
                 name="filter"
                 className="form-control"
                 id="inputState"
-                onChange={e => this.searchReport(e)}
+                onChange={(e) => this.searchReport(e)}
               >
                 <option value="" selected>
                   Plilih Bulan
@@ -484,7 +483,7 @@ export default class LaporanKeuangan extends Component {
                 name="tahun"
                 className="form-control"
                 id="inputState"
-                onChange={e => this.searchReport(e)}
+                onChange={(e) => this.searchReport(e)}
               >
                 <option value="" selected>
                   Plilih Tahun
@@ -496,7 +495,9 @@ export default class LaporanKeuangan extends Component {
             </div>
             <div className="form-group col-md-4">
               <h5 style={{}}>Total saldo :</h5>
-              <h5 style={{ fontWeight: "bold" }}>Rp.<label id="saldo"></label>,00</h5>
+              <h5 style={{ fontWeight: "bold" }}>
+                Rp.<label id="saldo"></label>,00
+              </h5>
             </div>
           </div>
           <div className="input-group ">
@@ -507,7 +508,7 @@ export default class LaporanKeuangan extends Component {
               aria-label=""
               aria-describedby="basic-addon2"
               id="search"
-              onChange={e => this.searchReport(e)}
+              onChange={(e) => this.searchReport(e)}
             ></input>
             <div className="input-group-append"></div>
           </div>
@@ -525,7 +526,7 @@ export default class LaporanKeuangan extends Component {
             <tbody id="listJournal">
               {file.length <= 0
                 ? "NO DB ENTRIES YET"
-                : file.map(fil => (
+                : file.map((fil) => (
                     <tr>
                       <td>
                         {" " + months[fil._id.month - 1] + " " + fil._id.year}
