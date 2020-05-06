@@ -158,9 +158,9 @@ export default class FarmManagement extends Component {
     var s = 0;
     var t = 0;
     this.state.data.map((dat) => (dat.status == 1 ? (s = s + 1) : (t = t + 1)));
-    if (s>0 || t>0) {
+    if (s > 0 || t > 0) {
       document.getElementById("stock").innerHTML = s;
-    document.getElementById("jual").innerHTML = t;
+      document.getElementById("jual").innerHTML = t;
     }
   };
 
@@ -258,15 +258,10 @@ export default class FarmManagement extends Component {
           image2: "",
           image3: "",
         });
-<<<<<<< HEAD
+
         document.getElementById("outputimage1").src = null;
         document.getElementById("outputimage2").src = null;
         document.getElementById("outputimage3").src = null;
-=======
-        document.getElementById("outputimage1").src=null;
-        document.getElementById("outputimage2").src=null;
-        document.getElementById("outputimage3").src=null;
->>>>>>> b000c7cc387f06065e903ca3cf703dceabb9b4ca
       });
     } else window.alert(`Mohon isi form dengan lengkap`);
 
