@@ -515,7 +515,6 @@ export default class LaporanKeuangan extends Component {
                 <th scope="col">Bulan</th>
                 <th scope="col">Pemasukan</th>
                 <th scope="col">Pengeluaran</th>
-                <th scope="col">Selisih</th>
 
                 <th scope="col">Action</th>
               </tr>
@@ -530,7 +529,6 @@ export default class LaporanKeuangan extends Component {
                       </td>
                       <td>{fil.pendapatan}</td>
                       <td>{fil.pengeluaran}</td>
-                      <td>{fil.pendapatan - fil.pengeluaran}</td>
                       <td>
                         <Link
                           to={
