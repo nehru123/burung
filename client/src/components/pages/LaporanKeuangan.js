@@ -49,17 +49,17 @@ export default class LaporanKeuangan extends Component {
         isLoading: false,
       });
     });
+    await api.getSaldo().then((saldo) => {
+      if (saldo.data.data.saldo != null) {
+        document.getElementById("saldo").innerHTML = saldo.data.data.saldo;
+      }
+    });
     await api.getAllBirds().then((bird) => {
       console.log(bird);
       this.setState({
         data: bird.data.data,
         isLoading: false,
       });
-    });
-    await api.getSaldo().then((saldo) => {
-      if (saldo.data.data.saldo != null) {
-        document.getElementById("saldo").innerHTML = saldo.data.data.saldo;
-      }
     });
   };
   componentWillUnmount() {
@@ -517,7 +517,6 @@ export default class LaporanKeuangan extends Component {
                 <th scope="col">Bulan</th>
                 <th scope="col">Pemasukan</th>
                 <th scope="col">Pengeluaran</th>
-                <th scope="col">Selisih</th>
 
                 <th scope="col">Action</th>
               </tr>
@@ -532,7 +531,6 @@ export default class LaporanKeuangan extends Component {
                       </td>
                       <td>{fil.pendapatan}</td>
                       <td>{fil.pengeluaran}</td>
-                      <td>{fil.pendapatan - fil.pengeluaran}</td>
                       <td>
                         <Link
                           to={
