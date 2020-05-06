@@ -158,15 +158,9 @@ export default class FarmManagement extends Component {
     var s = 0;
     var t = 0;
     this.state.data.map((dat) => (dat.status == 1 ? (s = s + 1) : (t = t + 1)));
-<<<<<<< HEAD
-    if (s > 0 || t > 0) {
-      document.getElementById("stock").innerHTML = s;
-      document.getElementById("jual").innerHTML = t;
-=======
     if (s>0 || t>0) {
       document.getElementById("stock").innerHTML = s;
     document.getElementById("jual").innerHTML = t;
->>>>>>> b000c7cc387f06065e903ca3cf703dceabb9b4ca
     }
   };
 
