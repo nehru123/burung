@@ -31,7 +31,7 @@ const Wrapper = styled.div`
   }
 `;
 const Container = styled.div`
-  margin: 23px;
+  margin: 50px;
   .rounded-circle {
     margin: 100px;
   }
