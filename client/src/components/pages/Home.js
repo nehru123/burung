@@ -40,18 +40,18 @@ const Container = styled.div`
 export default class Home extends Component {
   state = {
     path: "/img/",
-    data: []
+    data: [],
   };
   // when component mounts, first thing it does is fetch all existing data in our db
   // then we incorporate a polling logic so that we can easily see if our db has
   // changed and implement those changes into our UI
   componentDidMount = async () => {
     this.setState({ isLoading: true });
-    await api.getAllBirds().then(bird => {
+    await api.getAllBirds().then((bird) => {
       console.log(bird);
       this.setState({
         data: bird.data.data,
-        isLoading: false
+        isLoading: false,
       });
     });
   };
@@ -63,9 +63,9 @@ export default class Home extends Component {
   }
 
   getDataFromDb = () => {
-    api.getAllBirds().then(bird => {
+    api.getAllBirds().then((bird) => {
       this.setState({
-        data: bird.data.data
+        data: bird.data.data,
       });
     });
   };
@@ -78,11 +78,10 @@ export default class Home extends Component {
           <div className="container">
             <p
               className="jumbotron-heading"
-              style={{ fontFamily: "Montserrat",fontSize:20}}
+              style={{ fontFamily: "Montserrat", fontSize: 20 }}
             >
               Welcome to Kenari Farm
             </p>
-         
 
             {/* <button
               type="button"
@@ -98,7 +97,7 @@ export default class Home extends Component {
         <div class="row" style={{ justifyContent: "center" }}>
           {data.length <= 0
             ? "NO DB ENTRIES YET"
-            : data.map(dat => (
+            : data.map((dat) => (
                 <Container>
                   <div className="text-center">
                     <img
@@ -106,7 +105,7 @@ export default class Home extends Component {
                       src={this.state.path + dat.image1}
                       alt="Generic placeholder image"
                       width="140"
-                      height="140"
+                      height="135"
                     ></img>
                     <h5 className="Title">
                       {dat.name} {dat.jenis} ({stat[dat.status]})
