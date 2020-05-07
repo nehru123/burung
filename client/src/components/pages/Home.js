@@ -24,14 +24,14 @@ const Wrapper = styled.div`
     background-size: cover;
   }
   .container {
-    margin-top: 50px;
+    margin-top: 35px;
   }
   .jumbotron-heading {
     font-family: Arial, Helvetica, sans-serif;
   }
 `;
 const Container = styled.div`
-  margin: 25px;
+  margin: 23px;
   .rounded-circle {
     margin: 100px;
   }
@@ -104,7 +104,7 @@ export default class Home extends Component {
                       className="rounded-circle"
                       src={this.state.path + dat.image1}
                       alt="Generic placeholder image"
-                      width="140"
+                      width="135"
                       height="135"
                     ></img>
                     <h5 className="Title">
