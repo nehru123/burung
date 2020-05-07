@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "/api/Gallery",
+  baseURL: "/api/gallery",
 });
 const apiup = axios.create({
   baseURL: "",
