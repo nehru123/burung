@@ -94,7 +94,7 @@ export default class Home extends Component {
           </div>
         </section>
 
-        <div class="row" style={{ justifyContent: "space-between" }}>
+        <div class="row" style={{ justifyContent: "space-evenly" }}>
           {data.length <= 0
             ? "NO DB ENTRIES YET"
             : data.map((dat) => (
