@@ -638,18 +638,6 @@ export default class FarmManagement extends Component {
                               required
                             ></input>
                           </div>
-                          {/* <div className="form-group col-md-3">
-                            <label for="inputHarga">Harga (Rupiah)</label>
-                            <input
-                              name="harga"
-                              type="number"
-                              className="form-control"
-                              id="harga"
-                              onChange={(e) => this.onChange(e)}
-                              required
-                              value={this.state.harga}
-                            ></input>
-                          </div> */}
                         </div>
                         <div
                           className="form-row"
