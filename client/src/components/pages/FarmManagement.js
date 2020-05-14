@@ -16,6 +16,40 @@ const Container = styled.nav`
     width: 100%;
     margin: 0px auto;
     float: none;
+      @media (max-width: 760px),
+        (min-device-width: 768px) and (max-device-width: 1024px) {
+        /* Force table to not be like tables anymore */
+        table,
+        thead,
+        tbody,
+        th,
+        td,
+        tr {
+          display: block;
+        }
+
+        /* Hide table headers (but not display: none;, for accessibility) */
+        thead tr {
+          position: absolute;
+          top: -9999px;
+          left: -9999px;
+        }
+
+        tr {
+          border: 1px solid #ccc;
+        }
+
+        td {
+          /* Behave  like a "row" */
+          border: none;
+          border-bottom: 1px solid #eee;
+          position: relative;
+         
+        }
+
+   
+      }
+    }
   }
 
   .card-counter {
@@ -1202,26 +1236,47 @@ export default class FarmManagement extends Component {
                                           </span>
                                         </button>
                                       </div>
+                                      <img
+                                        style={{
+                                          width: 90,
+                                          height: 90,
+                                          margin: "auto",
+                                        }}
+                                        src="https://img.icons8.com/cotton/2x/delete-sign--v2.png"
+                                      />
                                       <div
-                                        style={{ fontWeight: "bold" }}
-                                        class="modal-body"
+                                        style={{
+                                          fontWeight: "bold",
+                                          textAlign: "center",
+                                          fontSize: 15,
+                                        }}
+                                        className="modal-body"
                                       >
                                         Yakin Menghapus Data ?
                                       </div>
-                                      <div class="modal-footer">
+                                      <div
+                                        style={{
+                                          justifyContent: "center",
+                                          margin: "auto",
+                                          height: 100,
+                                        }}
+                                        className="mfooter"
+                                      >
                                         <button
+                                          style={{ margin: 10 }}
                                           type="button"
-                                          class="btn btn-secondary"
+                                          className="btn btn-secondary"
                                           data-dismiss="modal"
                                         >
                                           Close
                                         </button>
 
                                         <button
+                                          style={{ marign: 10 }}
                                           type="button"
                                           onClick={(e) => this.deleteData(e)}
                                           data-dismiss="modal"
-                                          class="btn btn-danger"
+                                          className="btn btn-danger"
                                         >
                                           Hapus
                                         </button>

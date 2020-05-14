@@ -8,25 +8,30 @@ import assets from "../assets/Foto.png";
 
 import styled from "styled-components";
 
-const mapStateToProps = state => ({
-  auth: state.auth
+const mapStateToProps = (state) => ({
+  auth: state.auth,
 });
 
 const Container = styled.nav`
-  min-height: 100vh;
   overflow-x: hidden;
   overflow-y: hidden;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
   background-color: #faca09;
+  transform: translateY(-150px);
+.logo {
+  transform: translateY(76px);  
+}
 
+  }
   .Kotak {
     margin: auto;
-    margin-top: 60px;
+    margin-top: -50px;
     border-radius: 40px;
     box-shadow: 8px 15px 25px 0 rgba(0, 0, 0, 0.16);
     background-color: #ffffff;
     width: 368px;
     height: 420px;
+    
   }
   .Wrapper {
     margin: 30px;
@@ -53,14 +58,14 @@ const Container = styled.nav`
 class Login extends Component {
   state = {
     email: "",
-    password: ""
+    password: "",
   };
 
   onSubmit(e) {
     e.preventDefault();
     const userData = {
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
     };
 
     this.props.loginuser(userData, this.props.history);
@@ -68,7 +73,7 @@ class Login extends Component {
 
   onChange({ target }) {
     this.setState({
-      [target.name]: target.value
+      [target.name]: target.value,
     });
   }
   // logged in and error handling
@@ -87,103 +92,108 @@ class Login extends Component {
 
   render() {
     return (
-      <Container>
-        <img
-          style={{ position: "relative", left: 640, bottom: -156 }}
-          src="Foto.png"
-          width="150px"
-          height="100px"
-        ></img>
-        <div className="Kotak">
-          <form onSubmit={e => this.onSubmit(e)}>
-            <div className="Wrapper">
-              <div class="form-group">
-                {/* <label for="exampleInputEmail1">Email address</label> */}
-                <i
-                  style={{ position: "relative", left: 27, bottom: -37 }}
-                  className="fa fa-envelope"
-                  aria-hidden="true"
-                ></i>
-                <input
-                  style={{
-                    borderRadius: 15,
-                    backgroundColor: "#f2eded",
-                    fontSize: 13,
-                    padding: 13,
-                    borderWidth: 0,
-                    paddingInlineStart: 50
-                  }}
-                  type="email"
-                  name="email"
-                  placeholder="email address"
-                  class="form-control"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
-                  onChange={e => this.onChange(e)}
-                  value={this.state.email}
-                />
-              </div>
+      <div style={{ height: "100vh" }} className="Besar">
+        <Container style={{ width: "100%", height: "100%" }}>
+          <div className="Wrapper">
+            <img
+              style={{ margin: "auto", display: "flex" }}
+              className="logo"
+              src="Foto.png"
+              width="150px"
+              height="100px"
+            ></img>
+            <div className="Kotak">
+              <form onSubmit={(e) => this.onSubmit(e)}>
+                <div className="Wrapper">
+                  <div class="form-group">
+                    {/* <label for="exampleInputEmail1">Email address</label> */}
+                    <i
+                      style={{ position: "relative", left: 27, bottom: -37 }}
+                      className="fa fa-envelope"
+                      aria-hidden="true"
+                    ></i>
+                    <input
+                      style={{
+                        borderRadius: 15,
+                        backgroundColor: "#f2eded",
+                        fontSize: 13,
+                        padding: 13,
+                        borderWidth: 0,
+                        paddingInlineStart: 50,
+                      }}
+                      type="email"
+                      name="email"
+                      placeholder="email address"
+                      class="form-control"
+                      id="exampleInputEmail1"
+                      aria-describedby="emailHelp"
+                      onChange={(e) => this.onChange(e)}
+                      value={this.state.email}
+                    />
+                  </div>
 
-              <div class="form-group">
-                {/* <label for="exampleInputPassword1">Password</label> */}
-                <i
-                  style={{ position: "relative", left: 27, bottom: -37 }}
-                  className="fa fa-key"
-                  aria-hidden="true"
-                ></i>
+                  <div class="form-group">
+                    {/* <label for="exampleInputPassword1">Password</label> */}
+                    <i
+                      style={{ position: "relative", left: 27, bottom: -37 }}
+                      className="fa fa-key"
+                      aria-hidden="true"
+                    ></i>
 
-                <input
-                  style={{
-                    borderRadius: 15,
-                    backgroundColor: "#f2eded",
-                    fontSize: 13,
-                    padding: 13,
-                    borderWidth: 0,
-                    paddingInlineStart: 60
-                  }}
-                  type="password"
-                  placeholder="password"
-                  name="password"
-                  class="form-control"
-                  id="exampleInputPassword1"
-                  onChange={e => this.onChange(e)}
-                  value={this.state.password}
-                />
-              </div>
+                    <input
+                      style={{
+                        borderRadius: 15,
+                        backgroundColor: "#f2eded",
+                        fontSize: 13,
+                        padding: 13,
+                        borderWidth: 0,
+                        paddingInlineStart: 60,
+                      }}
+                      type="password"
+                      placeholder="password"
+                      name="password"
+                      class="form-control"
+                      id="exampleInputPassword1"
+                      onChange={(e) => this.onChange(e)}
+                      value={this.state.password}
+                    />
+                  </div>
+                </div>
+                <div className="ButtonLogin">
+                  <button
+                    style={{
+                      // backgroundColor: "#feb200",
+                      width: 110,
+                      height: 35,
+                      fontSize: 13,
+                      color: "white",
+                    }}
+                    type="submit"
+                    className="btn btn-login "
+                  >
+                    Login
+                  </button>
+                </div>
+                <p style={{ textAlign: "center", marginTop: 50 }}>
+                  Belum Daftar ?{" "}
+                  <span>
+                    <Link to="/Register" className="card-link">
+                      <a className="GoesTo">Daftar Disini</a>
+                    </Link>
+                  </span>
+                </p>{" "}
+              </form>
             </div>
-            <div className="ButtonLogin">
-              <button
-                style={{
-                  // backgroundColor: "#feb200",
-                  width: 110,
-                  height: 35,
-                  fontSize: 13,
-                  color: "white"
-                }}
-                type="submit"
-                className="btn btn-login "
-              >
-                Login
-              </button>
-            </div>
-            <p style={{ textAlign: "center", marginTop: 50 }}>
-              Belum Daftar ?{" "}
-              <span>
-                <Link to="/Register" className="card-link">
-                  <a className="GoesTo">Daftar Disini</a>
-                </Link>
-              </span>
-            </p>{" "}
-          </form>
-        </div>
-      </Container>
+          </div>
+        </Container>
+      </div>
     );
   }
 }
 Login.propTypes = {
   loginuser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+  errors: PropTypes.object.isRequired,
 };
 
 export default connect(mapStateToProps, { loginuser })(withRouter(Login));

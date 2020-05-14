@@ -38,19 +38,19 @@ export default class Report extends Component {
     data: [],
     file: [],
     idUp: "",
-    id: 0
+    id: 0,
   };
   componentDidMount = async () => {
-    await api.getAllReports().then(report => {
+    await api.getAllReports().then((report) => {
       console.log(report);
       this.setState({
-        file: report.data.data
+        file: report.data.data,
       });
     });
-    await api.getAllBirds().then(bird => {
+    await api.getAllBirds().then((bird) => {
       console.log(bird);
       this.setState({
-        data: bird.data.data
+        data: bird.data.data,
       });
     });
   };
@@ -63,22 +63,22 @@ export default class Report extends Component {
 
   onChange({ target }) {
     this.setState({
-      [target.name]: target.value
+      [target.name]: target.value,
     });
   }
 
   getDataFromDb = () => {
-    api.getAllBirds().then(bird => {
+    api.getAllBirds().then((bird) => {
       this.setState({
-        data: bird.data.data
+        data: bird.data.data,
       });
     });
   };
 
   getReportFromDb = () => {
-    api.getAllReports().then(report => {
+    api.getAllReports().then((report) => {
       this.setState({
-        file: report.data.data
+        file: report.data.data,
       });
     });
   };
@@ -111,7 +111,7 @@ export default class Report extends Component {
     }
   }
 
-  print = async e => {
+  print = async (e) => {
     var divToPrint = document.getElementById("listReports");
     var newWin = window.open("");
     newWin.document.write(divToPrint.outerHTML);
@@ -119,7 +119,7 @@ export default class Report extends Component {
     newWin.close();
   };
 
-  addReport = async e => {
+  addReport = async (e) => {
     e.preventDefault();
     window.alert(this.state.tanggal);
     const payload = {
@@ -128,16 +128,16 @@ export default class Report extends Component {
       jam: this.state.jam,
       log: this.state.log,
       pakan: this.state.pakan,
-      status: this.state.status
+      status: this.state.status,
     };
 
-    await api.insertReport(payload).then(res => {
+    await api.insertReport(payload).then((res) => {
       window.alert(`Report inserted successfully`);
       this.getReportFromDb();
     });
     //registerburung(burungData);
   };
-  updateData = async e => {
+  updateData = async (e) => {
     e.preventDefault();
 
     const payload = {
@@ -146,18 +146,18 @@ export default class Report extends Component {
       jam: this.state.jamUp,
       log: this.state.logUp,
       pakan: this.state.pakanUp,
-      status: this.state.statusUp
+      status: this.state.statusUp,
     };
 
-    await api.updateReportById(this.state.idUp, payload).then(res => {
+    await api.updateReportById(this.state.idUp, payload).then((res) => {
       window.alert(`Report updated successfully`);
       this.getReportFromDb();
     });
     //registerburung(burungData);
   };
-  deleteData = async e => {
+  deleteData = async (e) => {
     e.preventDefault();
-    await api.deleteReportById(this.state.idUp).then(res => {
+    await api.deleteReportById(this.state.idUp).then((res) => {
       window.alert(`Bird deleted successfully`);
       this.getReportFromDb();
     });
@@ -178,7 +178,7 @@ export default class Report extends Component {
       "September",
       "October",
       "November",
-      "December"
+      "December",
     ];
     var d = null;
     return (
@@ -203,7 +203,7 @@ export default class Report extends Component {
               <button
                 type="button"
                 className="btn btn-primary"
-                onClick={e => this.print(e)}
+                onClick={(e) => this.print(e)}
               >
                 Download Log
               </button>
@@ -242,13 +242,13 @@ export default class Report extends Component {
                             name="nama"
                             className="form-control"
                             id="inputState"
-                            onChange={e => this.onChange(e)}
+                            onChange={(e) => this.onChange(e)}
                             value={this.state.nama}
                           >
                             <option selected>Choose</option>
                             {data.length <= 0
                               ? "NO DB ENTRIES YET"
-                              : data.map(dat => (
+                              : data.map((dat) => (
                                   <option value={dat.name}>{dat.name}</option>
                                 ))}
                           </select>
@@ -259,7 +259,7 @@ export default class Report extends Component {
                             type="date"
                             className="form-control"
                             name="tanggal"
-                            onChange={e => this.onChange(e)}
+                            onChange={(e) => this.onChange(e)}
                             value={this.state.tanggal}
                           ></input>
                         </div>
@@ -269,7 +269,7 @@ export default class Report extends Component {
                             type="time"
                             className="form-control"
                             name="jam"
-                            onChange={e => this.onChange(e)}
+                            onChange={(e) => this.onChange(e)}
                             value={this.state.jam}
                           ></input>
                         </div>
@@ -282,7 +282,7 @@ export default class Report extends Component {
                           id="exampleFormControlTextarea1"
                           rows="3"
                           name="log"
-                          onChange={e => this.onChange(e)}
+                          onChange={(e) => this.onChange(e)}
                           value={this.state.log}
                         ></textarea>
                       </div>
@@ -295,7 +295,7 @@ export default class Report extends Component {
                             className="form-control"
                             id="inputCity"
                             name="pakan"
-                            onChange={e => this.onChange(e)}
+                            onChange={(e) => this.onChange(e)}
                             value={this.state.pakan}
                           ></input>
                         </div>
@@ -306,7 +306,7 @@ export default class Report extends Component {
                             name="status"
                             className="form-control"
                             id="inputCity"
-                            onChange={e => this.onChange(e)}
+                            onChange={(e) => this.onChange(e)}
                             value={this.state.status}
                           >
                             <option selected>Choose</option>
@@ -329,7 +329,7 @@ export default class Report extends Component {
                         <button
                           type="button"
                           className="btn btn-success"
-                          onClick={e => this.addReport(e)}
+                          onClick={(e) => this.addReport(e)}
                         >
                           Tambahkan
                         </button>
@@ -351,7 +351,7 @@ export default class Report extends Component {
                   placeholder="Cari Log"
                   aria-label=""
                   id="search"
-                  onChange={e => this.searchReport(e)}
+                  onChange={(e) => this.searchReport(e)}
                   aria-describedby="basic-addon2"
                 ></input>
               </div>
@@ -373,7 +373,7 @@ export default class Report extends Component {
                 {file.length <= 0
                   ? "NO DB ENTRIES YET"
                   : file.map(
-                      fil => (
+                      (fil) => (
                         (d = new Date(fil.tanggal)),
                         (
                           <tr>

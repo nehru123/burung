@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Home from "../pages/Home";
 import { logout } from "../../actions/authActions";
+import assets from "../assets/Foto.png";
 
 const Container = styled.nav`
   .nav-link {
@@ -54,13 +55,13 @@ const Container = styled.nav`
   }
 `;
 
-const mapStateToProps = state => ({
-  auth: state.auth
+const mapStateToProps = (state) => ({
+  auth: state.auth,
 });
 
 class Navbar extends React.Component {
   state = {
-    name: ""
+    name: "",
   };
 
   componentDidMount() {
@@ -78,7 +79,7 @@ class Navbar extends React.Component {
     console.log("====================================");
     if (prevprops.auth.isAuthenticated !== this.props.auth.isAuthenticated) {
       this.setState({
-        name: prevprops.auth.user.name
+        name: prevprops.auth.user.name,
       });
     }
   }
@@ -91,42 +92,89 @@ class Navbar extends React.Component {
   render() {
     return (
       <Container>
-        <nav style={{}} className="navbar transparent navbar-inverse">
-          <div className="navbar-inner">
+        <nav
+          style={{ backgroundColor: "transparent" }}
+          className="navbar navbar-expand-lg navbar-light"
+        >
+          <a class="navbar-brand" href="#">
+            <img style={{}} src="Foto.png" width="200px" height="120px"></img>
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
             {/* <ul className="navbar-nav "> */}
             {this.props.auth.isAuthenticated ? (
               <React.Fragment>
                 <ul>
-                  <li>
+                  <li className="nav-item">
                     <Link to="/Home" className="card-link">
-                      <a style={{ color: "orange" }}>Home</a>
+                      <a
+                        className="nav-item nav-link active"
+                        style={{ color: "orange", fontSize: 14 }}
+                      >
+                        Home
+                      </a>
                     </Link>
                   </li>
-                  <li>
+                  <li className="nav-item">
                     <Link to="/FarmManagement" className="card-link">
-                      <a style={{ color: "orange" }}>List Bird</a>
+                      <a
+                        className="nav-item nav-link"
+                        style={{ color: "orange", fontSize: 14 }}
+                      >
+                        List Bird
+                      </a>
                     </Link>
                   </li>
 
-                  <li>
+                  <li className="nav-item">
                     <Link to="/Gallery" className="card-link">
-                      <a style={{ color: "orange" }}>Galery</a>
+                      <a
+                        className="nav-item nav-link "
+                        style={{ color: "orange", fontSize: 14 }}
+                      >
+                        Galery
+                      </a>
                     </Link>
                   </li>
-                  <li>
+                  <li className="nav-item">
                     <Link to="/Report" className="card-link">
-                      <a style={{ color: "orange" }}>Daily Log</a>
+                      <a
+                        className="nav-item nav-link"
+                        style={{ color: "orange", fontSize: 14 }}
+                      >
+                        Daily Log
+                      </a>
                     </Link>
                   </li>
-                  <li>
+                  <li className="nav-item">
                     <Link to="/LaporanKeuangan" className="card-link">
-                      <a style={{ color: "orange" }}>Finance</a>
+                      <a
+                        className="nav-item nav-link"
+                        style={{ color: "orange", fontSize: 14 }}
+                      >
+                        Finance
+                      </a>
                     </Link>
                   </li>
 
                   <li className="nav-item">
                     <Link to="/Breeding" className="card-link">
-                      <a style={{ color: "orange" }}>Breeding</a>
+                      <a
+                        className="nav-item nav-link"
+                        style={{ color: "orange", fontSize: 14 }}
+                      >
+                        Breeding
+                      </a>
                     </Link>
                   </li>
 
