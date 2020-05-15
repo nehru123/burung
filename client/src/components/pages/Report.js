@@ -357,44 +357,46 @@ export default class Report extends Component {
               </div>
             </div>
 
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">Nama</th>
-                  <th scope="col">Tanggal</th>
-                  <th scope="col">Jam</th>
-                  <th scope="col">Log</th>
-                  <th scope="col">Pakan</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">Action</th>
-                </tr>
-              </thead>
-              <tbody id="listReports">
-                {file.length <= 0
-                  ? "NO DB ENTRIES YET"
-                  : file.map(
-                      (fil) => (
-                        (d = new Date(fil.tanggal)),
-                        (
-                          <tr>
-                            <th scope="row">{fil.nama}</th>
-                            <td>
-                              {d.getDate() +
-                                " " +
-                                months[d.getMonth()] +
-                                " " +
-                                d.getFullYear()}
-                            </td>
-                            <td>{fil.jam}</td>
-                            <td>{fil.log}</td>
-                            <td>{fil.pakan}</td>
-                            <td>{fil.status}</td>
-                          </tr>
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Nama</th>
+                    <th scope="col">Tanggal</th>
+                    <th scope="col">Jam</th>
+                    <th scope="col">Log</th>
+                    <th scope="col">Pakan</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="listReports">
+                  {file.length <= 0
+                    ? "NO DB ENTRIES YET"
+                    : file.map(
+                        (fil) => (
+                          (d = new Date(fil.tanggal)),
+                          (
+                            <tr>
+                              <th scope="row">{fil.nama}</th>
+                              <td>
+                                {d.getDate() +
+                                  " " +
+                                  months[d.getMonth()] +
+                                  " " +
+                                  d.getFullYear()}
+                              </td>
+                              <td>{fil.jam}</td>
+                              <td>{fil.log}</td>
+                              <td>{fil.pakan}</td>
+                              <td>{fil.status}</td>
+                            </tr>
+                          )
                         )
-                      )
-                    )}
-              </tbody>
-            </table>
+                      )}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </Container>

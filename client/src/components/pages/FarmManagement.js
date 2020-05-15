@@ -828,233 +828,252 @@ export default class FarmManagement extends Component {
             </div>
 
             {/* Table Bird */}
-            <table className="table">
-              <thead>
-                <tr>
-                  <th scope="col"></th>
-                  <th scope="col"> Ring ID</th>
-                  <th scope="col">Jenis</th>
-                  <th scope="col">Warna</th>
-                  <th scope="col">Umur</th>
-                  <th scope="col">Jenis Kelamin</th>
-                  {/* <th scope="col">Harga</th> */}
-                  <th scope="col">Status</th>
-                  <th scope="col">Action</th>
-                </tr>
-              </thead>
-              <tbody id="listBirds">
-                {data.length <= 0
-                  ? "NO DB ENTRIES YET"
-                  : data.map(
-                      (dat) => (
-                        age.setTime(
-                          Date.parse(Date()) - Date.parse(dat.tanggal)
-                        ),
-                        (
-                          <tr>
-                            <td>
-                              <img
-                                src={this.state.path + dat.image1}
-                                width="50px"
-                                height="50px"
-                              ></img>
-                            </td>
-                            <td>{dat.name}</td>
-                            <td>{dat.jenis}</td>
-                            <td>{dat.warna}</td>
-                            <td> {age.getMonth()} bulan</td>
-                            <td>{dat.jenis_kelamin}</td>
-                            {/* <td>{dat.harga}</td> */}
-                            <td>{stat[dat.status]}</td>
-                            <td className="action">
-                              <button
-                                type="button"
-                                className="btn btn-warning"
-                                data-toggle="modal"
-                                data-target="#updatelah"
-                                onClick={(e) =>
-                                  this.setState({
-                                    nameUp: dat.name,
-                                    jenisUp: dat.jenis,
-                                    warnaUp: dat.warna,
-                                    tanggalUp: dat.tanggal,
-                                    jenis_kelaminUp: dat.jenis_kelamin,
-                                    deskripsiUp: dat.deskripsi,
-                                    idUp: dat._id,
-                                    // hargaUp: dat.harga,
-                                    statusUp: dat.status,
-                                    image1Up: dat.image1,
-                                    image2Up: dat.image2,
-                                    image3Up: dat.image3,
-                                  })
-                                }
-                              >
-                                <i class="fa fa-edit"></i>
-                                Edit
-                              </button>
-                              <div
-                                className="modal fade bd-example-modal-lg-Up"
-                                tabindex="-1"
-                                role="dialog"
-                                id="updatelah"
-                                aria-labelledby="myLargeModalLabel"
-                                aria-hidden="true"
-                              >
-                                {/* edit */}
-                                <div
-                                  className="modal-dialog modal-lg-Up"
-                                  role="document"
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col"> Ring ID</th>
+                    <th scope="col">Jenis</th>
+                    <th scope="col">Warna</th>
+                    <th scope="col">Umur</th>
+                    <th scope="col">Jenis Kelamin</th>
+                    {/* <th scope="col">Harga</th> */}
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="listBirds">
+                  {data.length <= 0
+                    ? "NO DB ENTRIES YET"
+                    : data.map(
+                        (dat) => (
+                          age.setTime(
+                            Date.parse(Date()) - Date.parse(dat.tanggal)
+                          ),
+                          (
+                            <tr>
+                              <td>
+                                <img
+                                  src={this.state.path + dat.image1}
+                                  width="50px"
+                                  height="50px"
+                                ></img>
+                              </td>
+                              <td>{dat.name}</td>
+                              <td>{dat.jenis}</td>
+                              <td>{dat.warna}</td>
+                              <td> {age.getMonth()} bulan</td>
+                              <td>{dat.jenis_kelamin}</td>
+                              {/* <td>{dat.harga}</td> */}
+                              <td>{stat[dat.status]}</td>
+                              <td className="action">
+                                <button
+                                  type="button"
+                                  className="btn btn-warning"
+                                  data-toggle="modal"
+                                  data-target="#updatelah"
+                                  onClick={(e) =>
+                                    this.setState({
+                                      nameUp: dat.name,
+                                      jenisUp: dat.jenis,
+                                      warnaUp: dat.warna,
+                                      tanggalUp: dat.tanggal,
+                                      jenis_kelaminUp: dat.jenis_kelamin,
+                                      deskripsiUp: dat.deskripsi,
+                                      idUp: dat._id,
+                                      // hargaUp: dat.harga,
+                                      statusUp: dat.status,
+                                      image1Up: dat.image1,
+                                      image2Up: dat.image2,
+                                      image3Up: dat.image3,
+                                    })
+                                  }
                                 >
-                                  <div className="modal-content">
-                                    <div className="modal-header">
-                                      <h5
-                                        className="modal-title"
-                                        id="exampleModalLabel"
-                                      >
-                                        Edit Data Burung
-                                      </h5>
-                                      <button
-                                        type="button"
-                                        className="close"
-                                        data-dismiss="modal"
-                                        aria-label="Close"
-                                      >
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
-                                    </div>
-                                    <div className="modal-body">
-                                      <form>
-                                        <div className="form-row">
-                                          <div className="form-group col-md-6">
-                                            <label for="inputName">
-                                              {" "}
-                                              RING ID
-                                            </label>
-                                            <input
-                                              type="name"
-                                              name="nameUp"
-                                              className="form-control"
-                                              onChange={(e) => this.onChange(e)}
-                                              value={this.state.nameUp}
-                                            ></input>
-                                          </div>
-                                          <div className="form-group col-md-6">
-                                            <label for="inputCity">Jenis</label>
-                                            <select
-                                              type="text"
-                                              name="jenisUp"
-                                              className="form-control"
-                                              id="inputCity"
-                                              onChange={(e) => this.onChange(e)}
-                                              value={this.state.jenisUp}
-                                            >
-                                              <option selected>Choose</option>
-                                              <option value="Kenari Lokal">
+                                  <i class="fa fa-edit"></i>
+                                  Edit
+                                </button>
+                                <div
+                                  className="modal fade bd-example-modal-lg-Up"
+                                  tabindex="-1"
+                                  role="dialog"
+                                  id="updatelah"
+                                  aria-labelledby="myLargeModalLabel"
+                                  aria-hidden="true"
+                                >
+                                  {/* edit */}
+                                  <div
+                                    className="modal-dialog modal-lg-Up"
+                                    role="document"
+                                  >
+                                    <div className="modal-content">
+                                      <div className="modal-header">
+                                        <h5
+                                          className="modal-title"
+                                          id="exampleModalLabel"
+                                        >
+                                          Edit Data Burung
+                                        </h5>
+                                        <button
+                                          type="button"
+                                          className="close"
+                                          data-dismiss="modal"
+                                          aria-label="Close"
+                                        >
+                                          <span aria-hidden="true">
+                                            &times;
+                                          </span>
+                                        </button>
+                                      </div>
+                                      <div className="modal-body">
+                                        <form>
+                                          <div className="form-row">
+                                            <div className="form-group col-md-6">
+                                              <label for="inputName">
                                                 {" "}
-                                                Kenari Lokal
-                                              </option>
-                                              <option value="Kenari Lokal">
-                                                {" "}
-                                                Kenari Loper
-                                              </option>
-                                              <option value="Kenari Yorkshire">
-                                                Kenari Yorkshire
-                                              </option>
-                                              <option value=" Kenari Border">
-                                                Kenari Border
-                                              </option>
-                                              <option value="Kenari AF">
-                                                Kenari AF
-                                              </option>
-                                              <option value="Kenari F1">
-                                                Kenari F1
-                                              </option>
-                                              <option value="Kenari F2">
-                                                Kenari F2
-                                              </option>
-                                              <option value="Kenari F3">
-                                                Kenari F3
-                                              </option>
-                                              <option value="Kenari SF">
-                                                Kenari SF
-                                              </option>
+                                                RING ID
+                                              </label>
+                                              <input
+                                                type="name"
+                                                name="nameUp"
+                                                className="form-control"
+                                                onChange={(e) =>
+                                                  this.onChange(e)
+                                                }
+                                                value={this.state.nameUp}
+                                              ></input>
+                                            </div>
+                                            <div className="form-group col-md-6">
+                                              <label for="inputCity">
+                                                Jenis
+                                              </label>
+                                              <select
+                                                type="text"
+                                                name="jenisUp"
+                                                className="form-control"
+                                                id="inputCity"
+                                                onChange={(e) =>
+                                                  this.onChange(e)
+                                                }
+                                                value={this.state.jenisUp}
+                                              >
+                                                <option selected>Choose</option>
+                                                <option value="Kenari Lokal">
+                                                  {" "}
+                                                  Kenari Lokal
+                                                </option>
+                                                <option value="Kenari Lokal">
+                                                  {" "}
+                                                  Kenari Loper
+                                                </option>
+                                                <option value="Kenari Yorkshire">
+                                                  Kenari Yorkshire
+                                                </option>
+                                                <option value=" Kenari Border">
+                                                  Kenari Border
+                                                </option>
+                                                <option value="Kenari AF">
+                                                  Kenari AF
+                                                </option>
+                                                <option value="Kenari F1">
+                                                  Kenari F1
+                                                </option>
+                                                <option value="Kenari F2">
+                                                  Kenari F2
+                                                </option>
+                                                <option value="Kenari F3">
+                                                  Kenari F3
+                                                </option>
+                                                <option value="Kenari SF">
+                                                  Kenari SF
+                                                </option>
 
-                                              <option value="Kenari Gloster">
-                                                Kenari Gloster
-                                              </option>
-                                              <option value="Kenari Melayu">
-                                                Kenari Melayu
-                                              </option>
-                                              <option value="Kenari Norwich">
-                                                Kenari Norwich
-                                              </option>
-                                            </select>
+                                                <option value="Kenari Gloster">
+                                                  Kenari Gloster
+                                                </option>
+                                                <option value="Kenari Melayu">
+                                                  Kenari Melayu
+                                                </option>
+                                                <option value="Kenari Norwich">
+                                                  Kenari Norwich
+                                                </option>
+                                              </select>
+                                            </div>
                                           </div>
-                                        </div>
 
-                                        <div className="form-group">
-                                          <label for="exampleFormControlTextarea1">
-                                            Deskripsi
-                                          </label>
-                                          <textarea
-                                            className="form-control"
-                                            id="exampleFormControlTextarea1"
-                                            rows="3"
-                                            name="deskripsiUp"
-                                            onChange={(e) => this.onChange(e)}
-                                            value={this.state.deskripsiUp}
-                                          ></textarea>
-                                        </div>
-
-                                        <div className="form-row">
-                                          <div className="form-group col-md-3">
-                                            <label for="inputCity">warna</label>
-                                            <input
-                                              type="text"
-                                              className="form-control"
-                                              id="inputCity"
-                                              name="warnaUp"
-                                              onChange={(e) => this.onChange(e)}
-                                              value={this.state.warnaUp}
-                                            ></input>
-                                          </div>
-                                          <div className="form-group col-md-3">
-                                            <label for="inputState">
-                                              Jenis Kelamin
+                                          <div className="form-group">
+                                            <label for="exampleFormControlTextarea1">
+                                              Deskripsi
                                             </label>
-                                            <select
-                                              type="text"
-                                              name="jenis_kelaminUp"
+                                            <textarea
                                               className="form-control"
-                                              id="inputState"
-                                              value={this.state.jenis_kelaminUp}
+                                              id="exampleFormControlTextarea1"
+                                              rows="3"
+                                              name="deskripsiUp"
                                               onChange={(e) => this.onChange(e)}
-                                            >
-                                              <option selected>
-                                                Pilih Jenis Kelamin
-                                              </option>
-                                              <option value="Jantan">
-                                                Jantan
-                                              </option>
-                                              <option value="Betina">
-                                                Betina
-                                              </option>
-                                            </select>
+                                              value={this.state.deskripsiUp}
+                                            ></textarea>
                                           </div>
-                                          <div className="form-group col-md-3">
-                                            <label for="inputtanggal">
-                                              Birthday
-                                            </label>
-                                            <input
-                                              type="date"
-                                              name="tanggalUp"
-                                              className="form-control"
-                                              id="inputZip"
-                                              onChange={(e) => this.onChange(e)}
-                                              value={this.state.tanggalUp}
-                                            ></input>
-                                          </div>
-                                          {/* <div className="form-group col-md-3">
+
+                                          <div className="form-row">
+                                            <div className="form-group col-md-3">
+                                              <label for="inputCity">
+                                                warna
+                                              </label>
+                                              <input
+                                                type="text"
+                                                className="form-control"
+                                                id="inputCity"
+                                                name="warnaUp"
+                                                onChange={(e) =>
+                                                  this.onChange(e)
+                                                }
+                                                value={this.state.warnaUp}
+                                              ></input>
+                                            </div>
+                                            <div className="form-group col-md-3">
+                                              <label for="inputState">
+                                                Jenis Kelamin
+                                              </label>
+                                              <select
+                                                type="text"
+                                                name="jenis_kelaminUp"
+                                                className="form-control"
+                                                id="inputState"
+                                                value={
+                                                  this.state.jenis_kelaminUp
+                                                }
+                                                onChange={(e) =>
+                                                  this.onChange(e)
+                                                }
+                                              >
+                                                <option selected>
+                                                  Pilih Jenis Kelamin
+                                                </option>
+                                                <option value="Jantan">
+                                                  Jantan
+                                                </option>
+                                                <option value="Betina">
+                                                  Betina
+                                                </option>
+                                              </select>
+                                            </div>
+                                            <div className="form-group col-md-3">
+                                              <label for="inputtanggal">
+                                                Birthday
+                                              </label>
+                                              <input
+                                                type="date"
+                                                name="tanggalUp"
+                                                className="form-control"
+                                                id="inputZip"
+                                                onChange={(e) =>
+                                                  this.onChange(e)
+                                                }
+                                                value={this.state.tanggalUp}
+                                              ></input>
+                                            </div>
+                                            {/* <div className="form-group col-md-3">
                                             <label for="inputHarga">
                                               Harga (Rupiah)
                                             </label>
@@ -1067,231 +1086,240 @@ export default class FarmManagement extends Component {
                                               value={this.state.hargaUp}
                                             ></input>
                                           </div> */}
-                                        </div>
-
-                                        <div
-                                          className="form-row"
-                                          style={{
-                                            justifyContent: "space-between",
-                                          }}
-                                        >
-                                          <div className="form-group col-md-3">
-                                            <label for="Image1Up"></label>
-                                            <input
-                                              type="file"
-                                              id="image1Up"
-                                              onChange={(e) => this.preview(e)}
-                                            />
-                                            <img
-                                              id="outputimage1Up"
-                                              width="100px"
-                                              height="100px"
-                                            />
-
-                                            <div class="form-group">
-                                              <button
-                                                type="button"
-                                                name="image1Up"
-                                                class="btn btn-primary"
-                                                onClick={(e) =>
-                                                  this.uploadImage(e)
-                                                }
-                                              >
-                                                Upload
-                                              </button>
-                                            </div>
-                                          </div>
-                                          <div className="form-group col-md-3">
-                                            <label for="inputCity"></label>
-                                            <input
-                                              type="file"
-                                              id="image2Up"
-                                              onChange={(e) => this.preview(e)}
-                                            />
-                                            <img
-                                              id="outputimage2Up"
-                                              width="100px"
-                                              height="100px"
-                                            />
-
-                                            <div class="form-group">
-                                              <button
-                                                type="button"
-                                                name="image2Up"
-                                                class="btn btn-primary"
-                                                onClick={(e) =>
-                                                  this.uploadImage(e)
-                                                }
-                                              >
-                                                Upload
-                                              </button>
-                                            </div>
                                           </div>
 
-                                          <div className="form-group col-md-3">
-                                            <label for="inputCity"></label>
-                                            <input
-                                              type="file"
-                                              id="image3Up"
-                                              onChange={(e) => this.preview(e)}
-                                            />
-                                            <img
-                                              id="outputimage3Up"
-                                              width="100px"
-                                              height="100px"
-                                            />
-
-                                            <div class="form-group">
-                                              <button
-                                                type="button"
-                                                name="image3Up"
-                                                class="btn btn-primary"
-                                                onClick={(e) =>
-                                                  this.uploadImage(e)
+                                          <div
+                                            className="form-row"
+                                            style={{
+                                              justifyContent: "space-between",
+                                            }}
+                                          >
+                                            <div className="form-group col-md-3">
+                                              <label for="Image1Up"></label>
+                                              <input
+                                                type="file"
+                                                id="image1Up"
+                                                onChange={(e) =>
+                                                  this.preview(e)
                                                 }
-                                              >
-                                                Upload
-                                              </button>
+                                              />
+                                              <img
+                                                id="outputimage1Up"
+                                                width="100px"
+                                                height="100px"
+                                              />
+
+                                              <div class="form-group">
+                                                <button
+                                                  type="button"
+                                                  name="image1Up"
+                                                  class="btn btn-primary"
+                                                  onClick={(e) =>
+                                                    this.uploadImage(e)
+                                                  }
+                                                >
+                                                  Upload
+                                                </button>
+                                              </div>
+                                            </div>
+                                            <div className="form-group col-md-3">
+                                              <label for="inputCity"></label>
+                                              <input
+                                                type="file"
+                                                id="image2Up"
+                                                onChange={(e) =>
+                                                  this.preview(e)
+                                                }
+                                              />
+                                              <img
+                                                id="outputimage2Up"
+                                                width="100px"
+                                                height="100px"
+                                              />
+
+                                              <div class="form-group">
+                                                <button
+                                                  type="button"
+                                                  name="image2Up"
+                                                  class="btn btn-primary"
+                                                  onClick={(e) =>
+                                                    this.uploadImage(e)
+                                                  }
+                                                >
+                                                  Upload
+                                                </button>
+                                              </div>
+                                            </div>
+
+                                            <div className="form-group col-md-3">
+                                              <label for="inputCity"></label>
+                                              <input
+                                                type="file"
+                                                id="image3Up"
+                                                onChange={(e) =>
+                                                  this.preview(e)
+                                                }
+                                              />
+                                              <img
+                                                id="outputimage3Up"
+                                                width="100px"
+                                                height="100px"
+                                              />
+
+                                              <div class="form-group">
+                                                <button
+                                                  type="button"
+                                                  name="image3Up"
+                                                  class="btn btn-primary"
+                                                  onClick={(e) =>
+                                                    this.uploadImage(e)
+                                                  }
+                                                >
+                                                  Upload
+                                                </button>
+                                              </div>
                                             </div>
                                           </div>
-                                        </div>
 
-                                        <div className="modal-footer">
+                                          <div className="modal-footer">
+                                            <button
+                                              type="button"
+                                              className="btn btn-secondary"
+                                              data-dismiss="modal"
+                                            >
+                                              Close
+                                            </button>
+                                            <button
+                                              type="button"
+                                              className="btn btn-success"
+                                              onClick={(e) =>
+                                                this.updateData(e)
+                                              }
+                                              data-dismiss="modal"
+                                            >
+                                              Update
+                                            </button>
+                                          </div>
+                                        </form>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <span>
+                                  {" "}
+                                  <Link
+                                    to={"/lihatRep?" + dat._id}
+                                    classNameName="card-link"
+                                  >
+                                    <button
+                                      type="button"
+                                      className="btn btn-primary"
+                                    >
+                                      <i class="fa fa-eye"></i>
+                                      Lihat
+                                    </button>
+                                  </Link>
+                                </span>
+                                <span>
+                                  {" "}
+                                  <button
+                                    type="button"
+                                    class="btn btn-danger"
+                                    data-toggle="modal"
+                                    data-target="#exampleModal"
+                                    onClick={(e) =>
+                                      this.setState({
+                                        idUp: dat._id,
+                                      })
+                                    }
+                                  >
+                                    <i class="fa fa-trash"></i>
+                                  </button>
+                                  <div
+                                    class="modal fade"
+                                    id="exampleModal"
+                                    tabindex="-1"
+                                    role="dialog"
+                                    aria-labelledby="exampleModalLabel"
+                                    aria-hidden="true"
+                                  >
+                                    <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5
+                                            class="modal-title"
+                                            id="exampleModalLabel"
+                                          ></h5>
                                           <button
+                                            type="button"
+                                            class="close"
+                                            name="idUp"
+                                            data-dismiss="modal"
+                                            aria-label="Close"
+                                            value={dat.idUp}
+                                          >
+                                            <span aria-hidden="true">
+                                              &times;
+                                            </span>
+                                          </button>
+                                        </div>
+                                        <img
+                                          style={{
+                                            width: 90,
+                                            height: 90,
+                                            margin: "auto",
+                                          }}
+                                          src="https://img.icons8.com/cotton/2x/delete-sign--v2.png"
+                                        />
+                                        <div
+                                          style={{
+                                            fontWeight: "bold",
+                                            textAlign: "center",
+                                            fontSize: 15,
+                                          }}
+                                          className="modal-body"
+                                        >
+                                          Yakin Menghapus Data ?
+                                        </div>
+                                        <div
+                                          style={{
+                                            justifyContent: "center",
+                                            margin: "auto",
+                                            height: 100,
+                                          }}
+                                          className="mfooter"
+                                        >
+                                          <button
+                                            style={{ margin: 10 }}
                                             type="button"
                                             className="btn btn-secondary"
                                             data-dismiss="modal"
                                           >
                                             Close
                                           </button>
+
                                           <button
+                                            style={{ marign: 10 }}
                                             type="button"
-                                            className="btn btn-success"
-                                            onClick={(e) => this.updateData(e)}
+                                            onClick={(e) => this.deleteData(e)}
                                             data-dismiss="modal"
+                                            className="btn btn-danger"
                                           >
-                                            Update
+                                            Hapus
                                           </button>
                                         </div>
-                                      </form>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <span>
-                                {" "}
-                                <Link
-                                  to={"/lihatRep?" + dat._id}
-                                  classNameName="card-link"
-                                >
-                                  <button
-                                    type="button"
-                                    className="btn btn-primary"
-                                  >
-                                    <i class="fa fa-eye"></i>
-                                    Lihat
-                                  </button>
-                                </Link>
-                              </span>
-                              <span>
-                                {" "}
-                                <button
-                                  type="button"
-                                  class="btn btn-danger"
-                                  data-toggle="modal"
-                                  data-target="#exampleModal"
-                                  onClick={(e) =>
-                                    this.setState({
-                                      idUp: dat._id,
-                                    })
-                                  }
-                                >
-                                  <i class="fa fa-trash"></i>
-                                </button>
-                                <div
-                                  class="modal fade"
-                                  id="exampleModal"
-                                  tabindex="-1"
-                                  role="dialog"
-                                  aria-labelledby="exampleModalLabel"
-                                  aria-hidden="true"
-                                >
-                                  <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <h5
-                                          class="modal-title"
-                                          id="exampleModalLabel"
-                                        ></h5>
-                                        <button
-                                          type="button"
-                                          class="close"
-                                          name="idUp"
-                                          data-dismiss="modal"
-                                          aria-label="Close"
-                                          value={dat.idUp}
-                                        >
-                                          <span aria-hidden="true">
-                                            &times;
-                                          </span>
-                                        </button>
-                                      </div>
-                                      <img
-                                        style={{
-                                          width: 90,
-                                          height: 90,
-                                          margin: "auto",
-                                        }}
-                                        src="https://img.icons8.com/cotton/2x/delete-sign--v2.png"
-                                      />
-                                      <div
-                                        style={{
-                                          fontWeight: "bold",
-                                          textAlign: "center",
-                                          fontSize: 15,
-                                        }}
-                                        className="modal-body"
-                                      >
-                                        Yakin Menghapus Data ?
-                                      </div>
-                                      <div
-                                        style={{
-                                          justifyContent: "center",
-                                          margin: "auto",
-                                          height: 100,
-                                        }}
-                                        className="mfooter"
-                                      >
-                                        <button
-                                          style={{ margin: 10 }}
-                                          type="button"
-                                          className="btn btn-secondary"
-                                          data-dismiss="modal"
-                                        >
-                                          Close
-                                        </button>
-
-                                        <button
-                                          style={{ marign: 10 }}
-                                          type="button"
-                                          onClick={(e) => this.deleteData(e)}
-                                          data-dismiss="modal"
-                                          className="btn btn-danger"
-                                        >
-                                          Hapus
-                                        </button>
                                       </div>
                                     </div>
                                   </div>
-                                </div>
-                              </span>
-                            </td>
-                          </tr>
+                                </span>
+                              </td>
+                            </tr>
+                          )
                         )
-                      )
-                    )}
-              </tbody>
-            </table>
+                      )}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </Container>

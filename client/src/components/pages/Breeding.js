@@ -400,60 +400,65 @@ export default class Breeding extends Component {
             </div>
 
             {/* Table Bird */}
-            <table className="table">
-              <thead>
-                <tr>
-                  <th scope="col"></th>
-                  <th scope="col">Foto Betina</th>
-                  <th scope="col">ID Betina</th>
-                  <th scope="col">Foto jantan</th>
-                  <th scope="col">ID Jantan</th>
-                  <th scope="col">Action</th>
-                </tr>
-              </thead>
-              <tbody id="listBirds">
-                {data.length <= 0
-                  ? "NO DB ENTRIES YET"
-                  : data.map((dat) => (
-                      <tr>
-                        <td>
-                          {" "}
-                          <h5>Parent {count++}</h5>
-                        </td>
-                        <td>
-                          <img
-                            src={this.state.path + dat.imagebetina}
-                            width="50px"
-                            height="50px"
-                          ></img>
-                        </td>
-                        <td>{dat.betina}</td>
-
-                        <td>
-                          <img
-                            src={this.state.path + dat.imagejantan}
-                            width="50px"
-                            height="50px"
-                          ></img>
-                        </td>
-                        <td>{dat.jantan}</td>
-                        <td>
-                          <span>
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Foto Betina</th>
+                    <th scope="col">ID Betina</th>
+                    <th scope="col">Foto jantan</th>
+                    <th scope="col">ID Jantan</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="listBirds">
+                  {data.length <= 0
+                    ? "NO DB ENTRIES YET"
+                    : data.map((dat) => (
+                        <tr>
+                          <td>
                             {" "}
-                            <Link
-                              to={"/DetailParent?" + dat._id}
-                              classNameName="card-link"
-                            >
-                              <button type="button" className="btn btn-success">
-                                Lihat Detail
-                              </button>
-                            </Link>
-                          </span>
-                        </td>
-                      </tr>
-                    ))}
-              </tbody>
-            </table>
+                            <h5>Parent {count++}</h5>
+                          </td>
+                          <td>
+                            <img
+                              src={this.state.path + dat.imagebetina}
+                              width="50px"
+                              height="50px"
+                            ></img>
+                          </td>
+                          <td>{dat.betina}</td>
+
+                          <td>
+                            <img
+                              src={this.state.path + dat.imagejantan}
+                              width="50px"
+                              height="50px"
+                            ></img>
+                          </td>
+                          <td>{dat.jantan}</td>
+                          <td>
+                            <span>
+                              {" "}
+                              <Link
+                                to={"/DetailParent?" + dat._id}
+                                classNameName="card-link"
+                              >
+                                <button
+                                  type="button"
+                                  className="btn btn-success"
+                                >
+                                  Lihat Detail
+                                </button>
+                              </Link>
+                            </span>
+                          </td>
+                        </tr>
+                      ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </Container>

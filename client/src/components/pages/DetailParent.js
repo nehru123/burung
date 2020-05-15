@@ -32,32 +32,30 @@ export default class DetailParent extends Component {
     namaBatch: "",
     data: [],
     file: [],
-    id: 0
+    id: 0,
   };
   // when component mounts, first thing it does is fetch all existing data in our db
   // then we inc orporate a polling logic so that we can easily see if our db has
   // changed and implement those changes into our UI
-  
+
   componentDidMount = async () => {
     this.setState({ isLoading: true });
     var query = window.location.search.substring(1);
-    await api.getBatchById(query).then(batch => {
+    await api.getBatchById(query).then((batch) => {
       this.setState({
-        data: batch.data.data
+        data: batch.data.data,
       });
     });
-    await api.getName(query).then(name => {
+    await api.getName(query).then((name) => {
       this.setState({
-        file: name.data.data
+        file: name.data.data,
       });
     });
-    this.state.data.forEach(dat => (
-      dat.status==1
-      ?document.getElementById("addnew").disabled = true
-      :""
-    ));
+    this.state.data.forEach((dat) =>
+      dat.status == 1 ? (document.getElementById("addnew").disabled = true) : ""
+    );
   };
-  
+
   componentWillUnmount() {
     if (this.state.intervalIsSet) {
       clearInterval(this.state.intervalIsSet);
@@ -67,21 +65,19 @@ export default class DetailParent extends Component {
 
   getDataFromDb = () => {
     var query = window.location.search.substring(1);
-    api.getBatchById(query).then(batch => {
+    api.getBatchById(query).then((batch) => {
       this.setState({
-        data: batch.data.data
+        data: batch.data.data,
       });
     });
-    this.state.data.forEach(dat => (
-      dat.status==1
-      ?document.getElementById("addnew").disabled = true
-      :""
-    ));
+    this.state.data.forEach((dat) =>
+      dat.status == 1 ? (document.getElementById("addnew").disabled = true) : ""
+    );
   };
 
   onChange({ target }) {
     this.setState({
-      [target.name]: target.value
+      [target.name]: target.value,
     });
   }
 
@@ -121,28 +117,28 @@ export default class DetailParent extends Component {
     }
   };
 
-  addBatch = async e => {
+  addBatch = async (e) => {
     e.preventDefault();
     if (this.state.namaBatch) {
       const payload = {
         idbreeding: this.state.idbreeding,
-        nama: this.state.namaBatch
+        nama: this.state.namaBatch,
       };
-      await api.insertBatch(payload).then(res => {
+      await api.insertBatch(payload).then((res) => {
         window.alert(`Batch inserted successfully`);
         document.getElementById("addnew").disabled = true;
         this.setState({
-          nama: ""
+          nama: "",
         });
         this.getDataFromDb();
       });
-    }else window.alert(`Mohon isi form dengan lengkap`);
+    } else window.alert(`Mohon isi form dengan lengkap`);
 
     //registerburung(burungData);
   };
 
   deleteData = async () => {
-    await api.deleteBirdById(this.state.idUp).then(res => {
+    await api.deleteBirdById(this.state.idUp).then((res) => {
       window.alert(`Batch deleted successfully`);
       this.getDataFromDb();
     });
@@ -164,15 +160,13 @@ export default class DetailParent extends Component {
         <div className="jumbotron jumbotron-fluid">
           <div className="container">
             <h1 style={{ textAlign: "center" }} className="display-12"></h1>
-
-            
           </div>
         </div>
         <div>
           <div className="container">
             <div className="MyButton">
               <button
-              id="addnew"
+                id="addnew"
                 type="button"
                 class="btn btn-success"
                 data-toggle="modal"
@@ -215,7 +209,7 @@ export default class DetailParent extends Component {
                             className="form-control"
                             id="namaBatch"
                             name="namaBatch"
-                            onChange={e => this.onChange(e)}
+                            onChange={(e) => this.onChange(e)}
                             // value="#"
                           ></input>
                         </div>
@@ -232,7 +226,7 @@ export default class DetailParent extends Component {
                         <button
                           type="button"
                           className="btn btn-success"
-                          onClick={e => this.addBatch(e)}
+                          onClick={(e) => this.addBatch(e)}
                         >
                           Tambahkan
                         </button>
@@ -245,57 +239,67 @@ export default class DetailParent extends Component {
 
             <h3>Parent</h3>
             <div className="Myrecord">
-            {file.map(fil => ("Jantan: "+fil.jantan+"    "+"Betina: "+fil.betina))}
+              {file.map(
+                (fil) =>
+                  "Jantan: " + fil.jantan + "    " + "Betina: " + fil.betina
+              )}
             </div>
 
             {/* Table Bird */}
-            <table className="table">
-              <thead>
-                <tr>
-                  <th scope="col"></th>
-                  <th scope="col"> Status</th>
-                  <th scope="col"></th>
-                  <th scope="col"></th>
-                  <th scope="col"></th>
-                  <th scope="col"></th>
-                  <th scope="col">Action</th>
-                </tr>
-              </thead>
-              <tbody id="listBirds">
-                {data.length <= 0
-                  ? "NO DB ENTRIES YET"
-                  : data.map(dat => (
-                      <tr>
-                        <td>
-                          {" "}
-                          <p>{dat.nama}</p>
-                        </td>
-                        <td>
-                          <p style={{ fontWeight: "bold" }}>{stat[dat.status]}</p>
-                        </td>
-                        <td></td>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-
-                        <td>
-                          <span>
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col"> Status</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="listBirds">
+                  {data.length <= 0
+                    ? "NO DB ENTRIES YET"
+                    : data.map((dat) => (
+                        <tr>
+                          <td>
                             {" "}
-                            <Link
-                              to={"/DetailLog?" + dat._id}
-                              classNameName="card-link"
-                            >
-                              <button type="button" className="btn btn-primary">
-                                Lihat Detail
-                              </button>
-                            </Link>
-                          </span>
-                        </td>
-                      </tr>
-                    ))}
-              </tbody>
-            </table>
+                            <p>{dat.nama}</p>
+                          </td>
+                          <td>
+                            <p style={{ fontWeight: "bold" }}>
+                              {stat[dat.status]}
+                            </p>
+                          </td>
+                          <td></td>
+
+                          <td></td>
+                          <td></td>
+                          <td></td>
+
+                          <td>
+                            <span>
+                              {" "}
+                              <Link
+                                to={"/DetailLog?" + dat._id}
+                                classNameName="card-link"
+                              >
+                                <button
+                                  type="button"
+                                  className="btn btn-primary"
+                                >
+                                  Lihat Detail
+                                </button>
+                              </Link>
+                            </span>
+                          </td>
+                        </tr>
+                      ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </Container>

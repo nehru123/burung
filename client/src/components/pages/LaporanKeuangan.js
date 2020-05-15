@@ -513,44 +513,46 @@ export default class LaporanKeuangan extends Component {
             ></input>
             <div className="input-group-append"></div>
           </div>
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Bulan</th>
-                <th scope="col">Pemasukan</th>
-                <th scope="col">Pengeluaran</th>
-                <th scope="col">Selisih</th>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Bulan</th>
+                  <th scope="col">Pemasukan</th>
+                  <th scope="col">Pengeluaran</th>
+                  <th scope="col">Selisih</th>
 
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody id="listJournal">
-              {file.length <= 0
-                ? "NO DB ENTRIES YET"
-                : file.map((fil) => (
-                    <tr>
-                      <td>
-                        {" " + months[fil._id.month - 1] + " " + fil._id.year}
-                      </td>
-                      <td>{fil.pendapatan}</td>
-                      <td>{fil.pengeluaran}</td>
-                      <td>{fil.pendapatan - fil.pengeluaran}</td>
-                      <td>
-                        <Link
-                          to={
-                            "/DetailKeuangan?" +
-                            fil._id.month +
-                            "+" +
-                            fil._id.year
-                          }
-                        >
-                          <button className="btn btn-success">Detail</button>
-                        </Link>
-                      </td>
-                    </tr>
-                  ))}
-            </tbody>
-          </table>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody id="listJournal">
+                {file.length <= 0
+                  ? "NO DB ENTRIES YET"
+                  : file.map((fil) => (
+                      <tr>
+                        <td>
+                          {" " + months[fil._id.month - 1] + " " + fil._id.year}
+                        </td>
+                        <td>{fil.pendapatan}</td>
+                        <td>{fil.pengeluaran}</td>
+                        <td>{fil.pendapatan - fil.pengeluaran}</td>
+                        <td>
+                          <Link
+                            to={
+                              "/DetailKeuangan?" +
+                              fil._id.month +
+                              "+" +
+                              fil._id.year
+                            }
+                          >
+                            <button className="btn btn-success">Detail</button>
+                          </Link>
+                        </td>
+                      </tr>
+                    ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </Container>
     );

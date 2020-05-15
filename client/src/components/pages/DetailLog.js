@@ -36,29 +36,29 @@ export default class DetailLog extends Component {
     file: [],
     nama: [],
     idUp: "",
-    id: 0
+    id: 0,
   };
   componentDidMount = async () => {
     var query = window.location.search.substring(1);
-    await api.getBatchlogById(query).then(batchlog => {
+    await api.getBatchlogById(query).then((batchlog) => {
       console.log(batchlog);
       this.setState({
-        file: batchlog.data.data
+        file: batchlog.data.data,
       });
     });
-    await api.getBatchById(query).then(batch => {
+    await api.getBatchById(query).then((batch) => {
       console.log(batch);
       this.setState({
-        data: batch.data.data
+        data: batch.data.data,
       });
-      if (this.state.data.status==0) {
+      if (this.state.data.status == 0) {
         document.getElementById("tambah").disabled = true;
         document.getElementById("akhir").disabled = true;
-      }      
-    });    
-    await api.getName(query).then(name => {
+      }
+    });
+    await api.getName(query).then((name) => {
       this.setState({
-        nama: name.data.data
+        nama: name.data.data,
       });
     });
   };
@@ -71,16 +71,16 @@ export default class DetailLog extends Component {
 
   onChange({ target }) {
     this.setState({
-      [target.name]: target.value
+      [target.name]: target.value,
     });
   }
 
   getDataFromDb = () => {
     var query = window.location.search.substring(1);
-    api.getBatchlogById(query).then(batch => {
+    api.getBatchlogById(query).then((batch) => {
       console.log(batch);
       this.setState({
-        file: batch.data.data
+        file: batch.data.data,
       });
     });
   };
@@ -113,7 +113,7 @@ export default class DetailLog extends Component {
     }
   }
 
-  print = async e => {
+  print = async (e) => {
     var divToPrint = document.getElementById("listReports");
     var newWin = window.open("");
     newWin.document.write(divToPrint.outerHTML);
@@ -121,7 +121,7 @@ export default class DetailLog extends Component {
     newWin.close();
   };
 
-  addReport = async e => {
+  addReport = async (e) => {
     e.preventDefault();
     const payload = {
       idbatch: this.state.idBatch,
@@ -134,29 +134,29 @@ export default class DetailLog extends Component {
     };
     window.alert(payload.tanggal);
 
-    await api.insertBatchlog(payload).then(res => {
+    await api.insertBatchlog(payload).then((res) => {
       window.alert(`Report inserted successfully`);
-      this.getDataFromDb();      
+      this.getDataFromDb();
     });
     //registerburung(burungData);
   };
-  batchStat = async e => {
+  batchStat = async (e) => {
     e.preventDefault();
 
     const payload = {
-      status: 0
+      status: 0,
     };
 
-    await api.updateBacthById(this.state.idBatch, payload).then(res => {
+    await api.updateBacthById(this.state.idBatch, payload).then((res) => {
       window.alert(`Report updated successfully`);
       document.getElementById("tambah").disabled = true;
       document.getElementById("akhir").disabled = true;
     });
     //registerburung(burungData);
   };
-  deleteData = async e => {
+  deleteData = async (e) => {
     e.preventDefault();
-    await api.deleteBirdById(this.state.idBatch).then(res => {
+    await api.deleteBirdById(this.state.idBatch).then((res) => {
       window.alert(`Bird deleted successfully`);
     });
   };
@@ -177,7 +177,7 @@ export default class DetailLog extends Component {
       "September",
       "October",
       "November",
-      "December"
+      "December",
     ];
     var d = null;
     return (
@@ -186,7 +186,8 @@ export default class DetailLog extends Component {
           <div className="container">
             <h1 className="display-4">Breeding Log</h1>
             <p className="lead">
-              Breeding Log digunakan untuk monitoring aktivitas Burung pada suatu budidaya
+              Breeding Log digunakan untuk monitoring aktivitas Burung pada
+              suatu budidaya
             </p>
             <button
               id="tambah"
@@ -242,7 +243,11 @@ export default class DetailLog extends Component {
                       >
                         No
                       </button>
-                      <button type="button" class="btn btn-primary" onClick={e => this.batchStat(e)}>
+                      <button
+                        type="button"
+                        class="btn btn-primary"
+                        onClick={(e) => this.batchStat(e)}
+                      >
                         Yes
                       </button>
                     </div>
@@ -284,11 +289,13 @@ export default class DetailLog extends Component {
                             name="status"
                             className="form-control"
                             id="inputCity"
-                            onChange={e => this.onChange(e)}
+                            onChange={(e) => this.onChange(e)}
                             value={this.state.status}
                           >
                             <option selected>Choose</option>
-                            <option value="Breeding Activity">Breeding Activity</option>
+                            <option value="Breeding Activity">
+                              Breeding Activity
+                            </option>
                             <option value="Kawin">Kawin</option>
                             <option value="Bertelur">Bertelur</option>
                             <option value="Perkembangan">Perkembangan</option>
@@ -301,7 +308,7 @@ export default class DetailLog extends Component {
                             type="date"
                             className="form-control"
                             name="tanggal"
-                            onChange={e => this.onChange(e)}
+                            onChange={(e) => this.onChange(e)}
                             value={this.state.tanggal}
                           ></input>
                         </div>
@@ -311,7 +318,7 @@ export default class DetailLog extends Component {
                             type="time"
                             className="form-control"
                             name="jam"
-                            onChange={e => this.onChange(e)}
+                            onChange={(e) => this.onChange(e)}
                             value={this.state.jam}
                           ></input>
                         </div>
@@ -323,7 +330,7 @@ export default class DetailLog extends Component {
                             name="born"
                             type="text"
                             className="form-control"
-                            onChange={e => this.onChange(e)}
+                            onChange={(e) => this.onChange(e)}
                             value={this.state.born}
                           ></input>
                         </div>
@@ -333,7 +340,7 @@ export default class DetailLog extends Component {
                             name="die"
                             type="text"
                             className="form-control"
-                            onChange={e => this.onChange(e)}
+                            onChange={(e) => this.onChange(e)}
                             value={this.state.die}
                           ></input>
                         </div>
@@ -346,7 +353,7 @@ export default class DetailLog extends Component {
                           id="exampleFormControlTextarea1"
                           rows="3"
                           name="log"
-                          onChange={e => this.onChange(e)}
+                          onChange={(e) => this.onChange(e)}
                           value={this.state.log}
                         ></textarea>
                       </div>
@@ -362,7 +369,7 @@ export default class DetailLog extends Component {
                         <button
                           type="button"
                           className="btn btn-success"
-                          onClick={e => this.addReport(e)}
+                          onClick={(e) => this.addReport(e)}
                         >
                           Tambahkan
                         </button>
@@ -378,42 +385,46 @@ export default class DetailLog extends Component {
           <div className="container">
             <h3>Batch: {data.nama}</h3>
             <div className="Myrecord">
-              {nama.map(nam => ("Jantan: "+nam.jantan+"    "+"Betina: "+nam.betina))}
+              {nama.map(
+                (nam) =>
+                  "Jantan: " + nam.jantan + "    " + "Betina: " + nam.betina
+              )}
             </div>
 
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">Type</th>
-                  <th scope="col">Log</th>
-                  <th scope="col"></th>
-                  <th scope="col"></th>
-                  <th scope="col"></th>
-                  <th scope="col">Jam</th>
-                  <th scope="col">Tanggal</th>
-                </tr>
-              </thead>
-              <tbody id="listReports">
-                {file.length <= 0
-                  ? "NO DB ENTRIES YET"
-                  : file.map(
-                      fil => (
-                        (d = new Date(fil.tanggal)),
-                        (
-                          <tr>
-                            <th scope="row">{fil.status}</th>
-                            <td>{fil.log}</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>{fil.jam}</td>
-                            <td>
-                              {d.getDate() +
-                                " " +
-                                months[d.getMonth()] +
-                                " " +
-                                d.getFullYear()}
-                              {/* <button
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Type</th>
+                    <th scope="col">Log</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col">Jam</th>
+                    <th scope="col">Tanggal</th>
+                  </tr>
+                </thead>
+                <tbody id="listReports">
+                  {file.length <= 0
+                    ? "NO DB ENTRIES YET"
+                    : file.map(
+                        (fil) => (
+                          (d = new Date(fil.tanggal)),
+                          (
+                            <tr>
+                              <th scope="row">{fil.status}</th>
+                              <td>{fil.log}</td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td>{fil.jam}</td>
+                              <td>
+                                {d.getDate() +
+                                  " " +
+                                  months[d.getMonth()] +
+                                  " " +
+                                  d.getFullYear()}
+                                {/* <button
                                 type="button"
                                 className="btn btn-success"
                                 data-toggle="modal"
@@ -627,7 +638,7 @@ export default class DetailLog extends Component {
                       </div>
                      </span>
              */}
-                              {/* <span>
+                                {/* <span>
                                 {""}
                                 <div class="form-check">
                                   <input
@@ -644,13 +655,14 @@ export default class DetailLog extends Component {
                                   </label>
                                 </div>
                               </span> */}
-                            </td>
-                          </tr>
+                              </td>
+                            </tr>
+                          )
                         )
-                      )
-                    )}
-              </tbody>
-            </table>
+                      )}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </Container>
