@@ -480,7 +480,7 @@ export default class FarmManagement extends Component {
                               onChange={(e) => this.onChange(e)}
                               value={this.state.idjantan}
                             >
-                              <option selected>Choose</option>
+                              <option selected>Pilih Induk Jantan</option>
                               {jantan.length <= 0
                                 ? "NO DB ENTRIES YET"
                                 : jantan.map((jan) => (
@@ -500,7 +500,7 @@ export default class FarmManagement extends Component {
                               onChange={(e) => this.onChange(e)}
                               value={this.state.idbetina}
                             >
-                              <option selected>Choose</option>
+                              <option selected>Pilih Induk Betina</option>
                               {jantan.length <= 0
                                 ? "NO DB ENTRIES YET"
                                 : betina.map((bet) => (
