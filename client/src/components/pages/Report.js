@@ -110,7 +110,6 @@ export default class Report extends Component {
       }
     }
   }
-
   print = async (e) => {
     var divToPrint = document.getElementById("listReports");
     var newWin = window.open("");
@@ -130,7 +129,6 @@ export default class Report extends Component {
       pakan: this.state.pakan,
       status: this.state.status,
     };
-
     await api.insertReport(payload).then((res) => {
       window.alert(`Report inserted successfully`);
       this.getReportFromDb();
@@ -162,7 +160,6 @@ export default class Report extends Component {
       this.getReportFromDb();
     });
   };
-
   render() {
     const { data } = this.state;
     const { file } = this.state;
@@ -208,7 +205,6 @@ export default class Report extends Component {
                 Download Log
               </button>
             </span>
-
             <div
               className="modal fade bd-example-modal-lg"
               tabindex="-1"
@@ -231,12 +227,11 @@ export default class Report extends Component {
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-
                   <div className="modal-body">
                     <form>
                       <div className="form-row">
                         <div className="form-group col-md-4">
-                          <label for="inputName">Nama</label>
+                          <label for="inputName">Pilih burung</label>
                           <select
                             type="text"
                             name="nama"
@@ -245,7 +240,7 @@ export default class Report extends Component {
                             onChange={(e) => this.onChange(e)}
                             value={this.state.nama}
                           >
-                            <option selected>Choose</option>
+                            <option selected>Pilih kenari</option>
                             {data.length <= 0
                               ? "NO DB ENTRIES YET"
                               : data.map((dat) => (
@@ -274,11 +269,11 @@ export default class Report extends Component {
                           ></input>
                         </div>
                       </div>
-
                       <div className="form-group">
                         <label for="exampleFormControlTextarea1">Log</label>
                         <textarea
                           className="form-control"
+                          placeholder="Log Aktivitas "
                           id="exampleFormControlTextarea1"
                           rows="3"
                           name="log"
@@ -286,11 +281,11 @@ export default class Report extends Component {
                           value={this.state.log}
                         ></textarea>
                       </div>
-
                       <div className="form-row">
                         <div className="form-group col-md-6">
                           <label for="inputCity">Pakan</label>
                           <input
+                            placeholder="Nama Pakan"
                             type="text"
                             className="form-control"
                             id="inputCity"
@@ -309,7 +304,7 @@ export default class Report extends Component {
                             onChange={(e) => this.onChange(e)}
                             value={this.state.status}
                           >
-                            <option selected>Choose</option>
+                            <option selected>Pilih status burung</option>
                             <option value="Normal">Normal</option>
                             <option value="Sakit">Sakit</option>
                             <option value="Pemulihan">Pemulihan</option>
@@ -317,14 +312,13 @@ export default class Report extends Component {
                           </select>
                         </div>
                       </div>
-
                       <div className="modal-footer">
                         <button
                           type="button"
                           className="btn btn-secondary"
                           data-dismiss="modal"
                         >
-                          Close
+                          Tutup
                         </button>
                         <button
                           type="button"
@@ -356,7 +350,6 @@ export default class Report extends Component {
                 ></input>
               </div>
             </div>
-
             <div class="table-responsive">
               <table class="table">
                 <thead>
@@ -367,7 +360,7 @@ export default class Report extends Component {
                     <th scope="col">Log</th>
                     <th scope="col">Pakan</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">Tindakan</th>
                   </tr>
                 </thead>
                 <tbody id="listReports">

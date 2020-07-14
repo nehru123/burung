@@ -80,17 +80,8 @@ export default class Home extends Component {
               className="jumbotron-heading"
               style={{ fontFamily: "Montserrat", fontSize: 20 }}
             >
-              Welcome to Kenari Farm
+              Selamat Datang di Kenari App
             </p>
-
-            {/* <button
-              type="button"
-              class="btn btn-primary"
-              data-toggle="modal"
-              data-target=".bd-example-modal-lg"
-            >
-              Get Started
-            </button> */}
           </div>
         </section>
 
@@ -112,7 +103,7 @@ export default class Home extends Component {
                     </h5>
 
                     <p>Berkualitas tinggi</p>
-                    {/* <p>{dat.tanggal} bulan</p> */}
+
                     <p>{dat.jenis_kelamin}</p>
                     <p>Suara Melengking</p>
                     <p>

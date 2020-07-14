@@ -206,7 +206,7 @@ export default class LaporanKeuangan extends Component {
       <Container>
         <div className="jumbotron jumbotron-fluid">
           <div className="container">
-            <h1 className="display-4"> Keuangan</h1>
+            <h1 className="display-4"> Laporan Keuangan</h1>
             <p className="lead">
               Detail Keuangan digunakan untuk melihat laporan keuangan dan
               transaksi burung kenari.
@@ -282,7 +282,7 @@ export default class LaporanKeuangan extends Component {
                         </div>
 
                         <div className="form-group col-md-6">
-                          <label for="inputName">Burung</label>
+                          <label for="inputName"> Pilih Burung</label>
                           <select
                             type="text"
                             name="idBird"
@@ -291,7 +291,7 @@ export default class LaporanKeuangan extends Component {
                             onChange={(e) => this.onChange(e)}
                             value={this.state.idBird}
                           >
-                            <option selected>Choose</option>
+                            <option selected>Pilih Kenari</option>
                             {data.length <= 0
                               ? "NO DB ENTRIES YET"
                               : data.map((dat) => (
@@ -300,8 +300,9 @@ export default class LaporanKeuangan extends Component {
                           </select>
                         </div>
                         <div className="form-group col-md-6">
-                          <label for="inputCity">pembeli</label>
+                          <label for="inputCity">Pembeli</label>
                           <input
+                            placeholder="Nama pembeli"
                             type="text"
                             className="form-control"
                             id="inputCity"
@@ -314,8 +315,9 @@ export default class LaporanKeuangan extends Component {
 
                       <div className="form-row">
                         <div className="form-group col-md-12">
-                          <label for="inputCity">Nominal</label>
+                          <label for="inputCity">Nominal harga</label>
                           <input
+                            placeholder="Nominal harga"
                             type="number"
                             className="form-control"
                             id="inputCity"
@@ -331,6 +333,7 @@ export default class LaporanKeuangan extends Component {
                           Keterangan
                         </label>
                         <textarea
+                          placeholder="Keterangan"
                           className="form-control"
                           id="exampleFormControlTextarea1"
                           rows="3"
@@ -347,7 +350,7 @@ export default class LaporanKeuangan extends Component {
                           className="btn btn-secondary"
                           data-dismiss="modal"
                         >
-                          Close
+                          Tutup
                         </button>
                         <button
                           type="button"
@@ -401,23 +404,23 @@ export default class LaporanKeuangan extends Component {
                       ></input>
                     </div>
 
-                    <div className="form-row">
-                      <div className="form-group col-md-12">
-                        <label for="inputCity">Nominal</label>
-                        <input
-                          type="number"
-                          className="form-control"
-                          id="inputCity"
-                          name="nominal"
-                          onChange={(e) => this.onChange(e)}
-                          value={this.state.nominal}
-                        ></input>
-                      </div>
+                    <div className="form-group col-md-12">
+                      <label for="inputCity">Nominal</label>
+                      <input
+                        placeholder="Nominal harga"
+                        type="number"
+                        className="form-control"
+                        id="inputCity"
+                        name="nominal"
+                        onChange={(e) => this.onChange(e)}
+                        value={this.state.nominal}
+                      ></input>
                     </div>
                   </div>
                   <div className="form-group">
                     <label for="exampleFormControlTextarea1">Keterangan</label>
                     <textarea
+                      placeholder="Keterangan"
                       className="form-control"
                       id="exampleFormControlTextarea1"
                       rows="3"
@@ -434,7 +437,7 @@ export default class LaporanKeuangan extends Component {
                       className="btn btn-secondary"
                       data-dismiss="modal"
                     >
-                      Close
+                      Tutup
                     </button>
                     <button
                       type="button"
@@ -471,6 +474,10 @@ export default class LaporanKeuangan extends Component {
                 <option value="Juni">Juni</option>
                 <option value="Juli">July</option>
                 <option value="Agustus">Agustus</option>
+                <option value="September">September</option>
+                <option value="October">October</option>
+                <option value="November">November</option>
+                <option value="December">December</option>
               </select>
               {/* <button type="button" className="btn btn-success">
                 Hitung Total Penjualan
@@ -492,6 +499,9 @@ export default class LaporanKeuangan extends Component {
                 <option value="2020">2020</option>
                 <option value="2019">2019</option>
                 <option value="2018">2018</option>
+                <option value="2017">2017</option>
+                <option value="2016">2016</option>
+                <option value="2015">2015</option>
               </select>
             </div>
             <div className="form-group col-md-4">
@@ -505,7 +515,7 @@ export default class LaporanKeuangan extends Component {
             <input
               type="text"
               className="form-control"
-              placeholder="Cari..."
+              placeholder="Pencarian"
               aria-label=""
               aria-describedby="basic-addon2"
               id="search"
@@ -520,7 +530,7 @@ export default class LaporanKeuangan extends Component {
                   <th scope="col">Bulan</th>
                   <th scope="col">Pemasukan</th>
                   <th scope="col">Pengeluaran</th>
-                  <th scope="col">Selisih</th>
+                  <th scope="col">Untung-Rugi</th>
 
                   <th scope="col">Action</th>
                 </tr>

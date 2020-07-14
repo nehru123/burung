@@ -187,7 +187,7 @@ export default class Galery extends Component {
                 <div className="modal-content" closeModal={this.closeModal}>
                   <div className="modal-header">
                     <h5 className="modal-title" id="exampleModalLabel">
-                      Gallery Burung
+                      Gallery Burung Kneari
                     </h5>
                     <button
                       type="button"
@@ -252,7 +252,7 @@ export default class Galery extends Component {
 
                       <div className="form-row">
                         <div className="form-group col-md-3">
-                          <label for="inputCity">Gambar Depan</label>
+                          <label for="inputCity">Gambar</label>
                           <input type="file" id="foto" />
                           <div class="form-group">
                             <button

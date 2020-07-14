@@ -350,7 +350,6 @@ export default class FarmManagement extends Component {
       }
     }
   };
-
   addBreeding = async (e) => {
     e.preventDefault();
     var imageb = "",
@@ -488,7 +487,6 @@ export default class FarmManagement extends Component {
                                   ))}
                             </select>
                           </div>
-
                           <div className="form-group col-md-6">
                             <label for="inputCity">Ring Betina </label>
                             <select
@@ -516,7 +514,7 @@ export default class FarmManagement extends Component {
                             className="btn btn-secondary"
                             data-dismiss="modal"
                           >
-                            Close
+                            Tutup
                           </button>
                           <button
                             type="submit"
@@ -562,7 +560,23 @@ export default class FarmManagement extends Component {
                         <div className="form-row">
                           <div className="form-group col-md-6">
                             <label for="inputName"> Ring ID</label>
+                            <i
+                              style={{
+                                position: "relative",
+                                left: -30,
+                                bottom: -41,
+                              }}
+                              className="fa fa-key"
+                              aria-hidden="true"
+                            ></i>
+
                             <input
+                              style={{
+                                fontSize: 13,
+                                padding: 9,
+
+                                paddingInlineStart: 50,
+                              }}
                               type="text"
                               name="name"
                               id="name"
@@ -631,11 +645,11 @@ export default class FarmManagement extends Component {
                             required
                           ></textarea>
                         </div>
-
                         <div className="form-row">
                           <div className="form-group col-md-3">
                             <label for="warna">Warna</label>
                             <input
+                              placeholder="warna"
                               type="text"
                               name="warna"
                               className="form-control"
@@ -657,6 +671,7 @@ export default class FarmManagement extends Component {
                               <option selected>Pilih Jenis Kelamin</option>
                               <option value="Jantan">Jantan</option>
                               <option value="Betina">Betina</option>
+                              <option value="Betina">Unsex</option>
                             </select>
                           </div>
 
@@ -755,7 +770,7 @@ export default class FarmManagement extends Component {
                             className="btn btn-secondary"
                             data-dismiss="modal"
                           >
-                            Close
+                            Tutup
                           </button>
                           <button
                             type="submit"
@@ -833,7 +848,7 @@ export default class FarmManagement extends Component {
                 <thead>
                   <tr>
                     <th scope="col"></th>
-                    <th scope="col"> Ring ID</th>
+                    <th scope="col">No Ring</th>
                     <th scope="col">Jenis</th>
                     <th scope="col">Warna</th>
                     <th scope="col">Umur</th>
@@ -931,7 +946,7 @@ export default class FarmManagement extends Component {
                                             <div className="form-group col-md-6">
                                               <label for="inputName">
                                                 {" "}
-                                                RING ID
+                                                No Ring
                                               </label>
                                               <input
                                                 type="name"

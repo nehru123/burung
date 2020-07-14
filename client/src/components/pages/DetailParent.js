@@ -172,7 +172,7 @@ export default class DetailParent extends Component {
                 data-toggle="modal"
                 data-target="#exampleModalLong"
               >
-                Add New Batch
+                Tambah Batch Baru
               </button>
             </div>
 
@@ -221,7 +221,7 @@ export default class DetailParent extends Component {
                           className="btn btn-secondary"
                           data-dismiss="modal"
                         >
-                          Close
+                          Tutup
                         </button>
                         <button
                           type="button"

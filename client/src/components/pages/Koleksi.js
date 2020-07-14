@@ -121,7 +121,7 @@ export default class Koleksi extends Component {
               data-toggle="modal"
               data-target=".bd-example-modal-lg"
             >
-              Tambah Gallery
+              Tambah Gallery Burung
             </button>
 
             <div
@@ -153,7 +153,7 @@ export default class Koleksi extends Component {
                         className="form-row"
                       >
                         <div className="form-group col-md-3">
-                          <label for="inputCity">Gambar Burung</label>
+                          <label for="inputCity">Foto Burung</label>
                           <input
                             type="file"
                             id="image"

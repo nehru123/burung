@@ -306,7 +306,7 @@ export default class Gallery extends Component {
         <div className="Wrapper">
           <div style={{}} class="album py-5 ">
             {/* <div class="container"> */}
-            <div style={{ padding: 50, margin: 30 }} class="row">
+            <div style={{ margin: 10, flexWrap: "wrap" }} class="row">
               {data.length <= 0
                 ? "NO DB ENTRIES YET"
                 : data.map((dat) => (
