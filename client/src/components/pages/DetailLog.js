@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import api from "../utils/ServicesBatchlog";
+import assets from "../assets/dl.PNG";
 
 const Container = styled.nav`
   .jumbotron {
-    background-image: url("");
+    background-image: url("dl.PNG");
     background-size: cover;
   }
   .table {

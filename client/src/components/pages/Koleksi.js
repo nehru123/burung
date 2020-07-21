@@ -109,12 +109,8 @@ export default class Koleksi extends Component {
       <Container>
         <section class="jumbotron text-center">
           <div class="container">
-            <h1>Kenari Gunung</h1>
-            <p class="lead text-muted">
-              Something short and leading about the collection below—its
-              contents, the creator, etc. Make it short and sweet, but not too
-              short so folks don’t simply skip over it entirely.
-            </p>
+            <h1>Album Kenari</h1>
+            <p class="lead text-muted"></p>
             <button
               type="button"
               className="btn btn-success"

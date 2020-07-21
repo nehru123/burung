@@ -284,7 +284,7 @@ export default class Gallery extends Component {
                           className="btn btn-secondary"
                           data-dismiss="modal"
                         >
-                          Close
+                          Tutup
                         </button>
                         <button
                           type="submit"
@@ -347,19 +347,6 @@ export default class Gallery extends Component {
                                   View
                                 </button>
                               </Link>
-                              <button
-                                type="button"
-                                class="btn btn-sm btn-outline-secondary"
-                                name="idUp"
-                                onClick={(e) =>
-                                  this.setState({
-                                    idUp: dat._id,
-                                  })
-                                }
-                                onClick={null}
-                              >
-                                Delete
-                              </button>
                             </div>
                           </div>
                           <div

@@ -559,7 +559,7 @@ export default class FarmManagement extends Component {
                       <form>
                         <div className="form-row">
                           <div className="form-group col-md-6">
-                            <label for="inputName"> Ring ID</label>
+                            <label for="inputName">No Ring</label>
                             <i
                               style={{
                                 position: "relative",

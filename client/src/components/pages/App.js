@@ -95,15 +95,12 @@ class App extends React.Component {
             </Switch>
             <Switch>
               <PrivateRoute exact path="/Gallery" component={Gallery} />
-              />
             </Switch>
             <Switch>
               <PrivateRoute exact path="/Jadwal" component={Jadwal} />
-              />
             </Switch>
             <Switch>
               <PrivateRoute exact path="/Koleksi" component={Koleksi} />
-              />
             </Switch>
             <Switch>
               <PrivateRoute
